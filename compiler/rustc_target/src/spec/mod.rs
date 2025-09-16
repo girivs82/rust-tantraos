@@ -1698,6 +1698,7 @@ supported_targets! {
 
     ("aarch64-unknown-none", aarch64_unknown_none),
     ("aarch64-unknown-none-softfloat", aarch64_unknown_none_softfloat),
+    ("aarch64-tantraos", aarch64_tantraos),
     ("aarch64_be-unknown-none-softfloat", aarch64_be_unknown_none_softfloat),
     ("aarch64-unknown-nuttx", aarch64_unknown_nuttx),
 

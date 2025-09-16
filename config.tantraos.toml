@@ -1,0 +1,35 @@
+# TantraOS Rust Compiler Configuration
+# This builds rustc with support for TantraOS targets
+
+[llvm]
+download-ci-llvm = true  # Use pre-built LLVM to save time
+
+[rust]
+channel = "nightly"
+lto = "off"
+codegen-units = 16  # Faster builds
+
+# Include our custom target
+target = ["x86_64-unknown-linux-gnu", "aarch64-tantraos"]
+
+[build]
+# Build for the host and TantraOS target
+host = ["x86_64-unknown-linux-gnu"]
+target = ["x86_64-unknown-linux-gnu", "aarch64-tantraos"]
+
+# Use our std-tantraos as the standard library for TantraOS targets
+cargo = "/usr/bin/cargo"
+rustc = "/usr/bin/rustc"
+docs = false
+compiler-docs = false
+extended = true
+tools = ["cargo", "rustfmt", "clippy"]
+
+[install]
+prefix = "/usr/local/tantraos-rust"
+sysconfdir = "/etc"
+
+[target.aarch64-tantraos]
+# Path to std-tantraos that will be used as std for this target
+# We'll symlink or copy our std-tantraos here
+std = "/Users/girivs/src/TantraOS/std-tantraos"
