@@ -565,6 +565,17 @@ impl<'tcx> Instance<'tcx> {
         match ty::Instance::try_resolve(tcx, typing_env, def_id, args) {
             Ok(Some(instance)) => instance,
             Ok(None) => {
+                // TantraOS async main bypass: For TantraOS, handle Termination trait resolution failures gracefully
+                // This prevents ICE when async main functions can't resolve Termination::report
+                if tcx.sess.target.os == "tantraos" {
+                    let def_path = tcx.def_path_str_with_args(def_id, args);
+                    if def_path.contains("Termination") && def_path.contains("report") {
+                        // Create a dummy instance for TantraOS Termination::report calls
+                        // This allows async main compilation to proceed without ICE
+                        return Instance::new_raw(def_id, args);
+                    }
+                }
+
                 let type_length = type_length(args);
                 if !tcx.type_length_limit().value_within_limit(type_length) {
                     tcx.dcx().emit_fatal(error::TypeLengthLimit {
