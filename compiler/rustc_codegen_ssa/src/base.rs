@@ -536,7 +536,51 @@ pub fn maybe_create_entry_wrapper<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>>(
         let (arg_argc, arg_argv) = get_argc_argv(&mut bx);
 
         let EntryFnType::Main { sigpipe } = entry_type;
-        let (start_fn, start_ty, args, instance) = {
+        let (start_fn, start_ty, args, instance) = if cx.sess().target.os == "tantraos" {
+            // TantraOS: Call main directly and handle result through Termination::report
+            // Bypass lang_start entirely to avoid linking issues
+            let call_result = bx.call(
+                cx.type_func(&[], cx.val_ty(rust_main)),
+                None,
+                None,
+                rust_main,
+                &[],
+                None,
+                None,
+            );
+
+            // Call Termination::report on the result
+            let termination_trait = cx.tcx().require_lang_item(LangItem::Termination, DUMMY_SP);
+            let report_item = cx.tcx().associated_items(termination_trait)
+                .find_by_ident_and_kind(
+                    cx.tcx(),
+                    rustc_span::symbol::Ident::from_str("report"),
+                    rustc_hir::def::AssocTag::Fn,
+                    termination_trait,
+                )
+                .unwrap();
+            let report_instance = ty::Instance::expect_resolve(
+                cx.tcx(),
+                cx.typing_env(),
+                report_item.def_id,
+                cx.tcx().mk_args(&[main_ret_ty.into()]),
+                DUMMY_SP,
+            );
+            let report_fn = cx.get_fn_addr(report_instance);
+
+            let report_ty = cx.type_func(&[cx.val_ty(call_result)], isize_ty);
+            let final_result = bx.call(report_ty, None, None, report_fn, &[call_result], None, Some(report_instance));
+
+            // Return the result directly, no further processing needed
+            if cx.sess().target.os.contains("uefi") {
+                bx.ret(final_result);
+            } else {
+                let cast = bx.intcast(final_result, cx.type_int(), true);
+                bx.ret(cast);
+            }
+
+            return llfn;
+        } else {
             let start_def_id = cx.tcx().require_lang_item(LangItem::Start, DUMMY_SP);
             let start_instance = ty::Instance::expect_resolve(
                 cx.tcx(),

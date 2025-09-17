@@ -8,7 +8,7 @@ mod configure_builtins;
 /// The PAL (platform abstraction layer) contains platform-specific abstractions
 /// for implementing the features in the other submodules, e.g. UNIX file
 /// descriptors.
-mod pal;
+pub mod pal;
 
 mod alloc;
 mod personality;

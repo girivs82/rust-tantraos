@@ -77,6 +77,10 @@ cfg_select! {
         mod zkvm;
         pub use self::zkvm::*;
     }
+    target_os = "tantraos" => {
+        pub mod tantraos;
+        pub use self::tantraos::*;
+    }
     _ => {
         mod unsupported;
         pub use self::unsupported::*;

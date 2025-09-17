@@ -92,6 +92,9 @@ cfg_select! {
     target_os = "uefi" => {
         mod uefi;
     }
+    target_os = "tantraos" => {
+        pub mod tantraos;
+    }
     target_family = "wasm" => {
         mod wasm;
     }

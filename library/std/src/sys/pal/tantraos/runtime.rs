@@ -1,0 +1,219 @@
+//! TantraOS async runtime interface
+//!
+//! This module provides the interface to TantraOS's kernel async runtime
+//! via TypedMailbox with automatic cross-privilege support. This aligns
+//! with TantraOS's design philosophy where everything communicates via
+//! message passing.
+
+#![allow(dead_code)]
+
+use core::future::Future;
+use core::ptr::addr_of_mut;
+
+/// Well-known mailbox IDs for runtime services
+#[allow(dead_code)]
+pub mod mailbox_ids {
+    /// Runtime service mailbox - kernel provides this
+    pub const RUNTIME_SERVICE: u64 = 0x1000;
+
+    /// Per-tasklet waker notification mailbox
+    pub const WAKER_BASE: u64 = 0x2000;
+}
+
+/// Messages to the kernel runtime service
+/// These are sent via TypedMailbox<RuntimeRequest>
+#[repr(C)]
+#[derive(Clone)]
+#[allow(dead_code)]
+pub enum RuntimeRequest {
+    /// Register a new async task
+    RegisterTask {
+        task_id: u64,
+        entry_point: usize,
+    },
+    /// Yield execution to scheduler
+    Yield,
+    /// Block on a future until completion
+    BlockOn {
+        future_ptr: usize,
+    },
+    /// Exit the current tasklet
+    Exit {
+        status: i32,
+    },
+}
+
+/// Responses from the kernel runtime
+/// Received via TypedMailbox<RuntimeResponse>
+#[repr(C)]
+#[derive(Clone)]
+#[allow(dead_code)]
+pub enum RuntimeResponse {
+    /// Task registered successfully
+    TaskRegistered {
+        task_id: u64,
+    },
+    /// Future completed with result
+    Completed,
+    /// Waker notification
+    Wake {
+        task_id: u64,
+    },
+    /// Error response
+    Error {
+        code: u32,
+    },
+}
+
+/// Stub for TypedMailbox - will be provided by TantraOS std
+/// This automatically handles cross-privilege communication
+#[allow(dead_code)]
+pub struct TypedMailbox<T> where T: Send + Clone + 'static {
+    channel_id: u64,
+    _phantom: core::marker::PhantomData<T>,
+}
+
+impl<T> TypedMailbox<T> where T: Send + Clone + 'static {
+    /// Connect to an existing mailbox by ID
+    pub fn connect(channel_id: u64) -> Self {
+        Self {
+            channel_id,
+            _phantom: core::marker::PhantomData,
+        }
+    }
+
+    /// Send a message (automatically handles cross-privilege)
+    pub fn send(&self, _msg: &T) {
+        // The actual TypedMailbox implementation will:
+        // 1. Detect privilege level difference
+        // 2. Use appropriate transport (shared memory, syscall, etc.)
+        // 3. Handle serialization if needed
+
+        // Stub: would use actual IPC mechanism
+    }
+
+    /// Receive a message (blocks)
+    pub fn receive(&self) -> T {
+        // Stub: would use actual IPC mechanism
+        panic!("TypedMailbox not yet connected to kernel");
+    }
+
+    /// Try to receive without blocking
+    pub fn try_receive(&self) -> Option<T> {
+        // Stub: would use actual IPC mechanism
+        None
+    }
+}
+
+/// Global runtime service mailbox (lazy initialized)
+static mut RUNTIME_MAILBOX: Option<TypedMailbox<RuntimeRequest>> = None;
+static mut RESPONSE_MAILBOX: Option<TypedMailbox<RuntimeResponse>> = None;
+
+/// Initialize runtime mailboxes (called once at startup)
+fn init_runtime_mailbox() {
+    unsafe {
+        if (*addr_of_mut!(RUNTIME_MAILBOX)).is_none() {
+            *addr_of_mut!(RUNTIME_MAILBOX) = Some(TypedMailbox::connect(mailbox_ids::RUNTIME_SERVICE));
+
+            // Create response mailbox for this tasklet
+            // In real implementation, would get tasklet ID from kernel
+            let tasklet_id = 0; // Placeholder
+            *addr_of_mut!(RESPONSE_MAILBOX) = Some(TypedMailbox::connect(
+                mailbox_ids::WAKER_BASE + tasklet_id
+            ));
+        }
+    }
+}
+
+/// Submit an async task to the kernel runtime via TypedMailbox
+pub fn block_on<F: Future>(future: F) -> F::Output {
+    init_runtime_mailbox();
+
+    // Get the runtime mailbox
+    let runtime_mailbox = unsafe {
+        (*addr_of_mut!(RUNTIME_MAILBOX)).as_ref().unwrap()
+    };
+
+    let response_mailbox = unsafe {
+        (*addr_of_mut!(RESPONSE_MAILBOX)).as_ref().unwrap()
+    };
+
+    // Send BlockOn request to kernel runtime
+    let request = RuntimeRequest::BlockOn {
+        future_ptr: &future as *const _ as usize,
+    };
+
+    runtime_mailbox.send(&request);
+
+    // Wait for completion response
+    loop {
+        match response_mailbox.receive() {
+            RuntimeResponse::Completed => {
+                // Future completed successfully
+                // In real implementation, would extract the result
+                panic!("TantraOS async runtime not fully connected yet");
+            }
+            RuntimeResponse::Error { code } => {
+                panic!("Runtime error: {}", code);
+            }
+            _ => {
+                // Continue waiting
+            }
+        }
+    }
+}
+
+/// Yield execution back to the kernel scheduler via TypedMailbox
+#[allow(dead_code)]
+pub fn yield_now() {
+    init_runtime_mailbox();
+
+    if let Some(mailbox) = unsafe { (*addr_of_mut!(RUNTIME_MAILBOX)).as_ref() } {
+        mailbox.send(&RuntimeRequest::Yield);
+    }
+}
+
+/// Exit the current tasklet
+#[allow(dead_code)]
+pub fn exit_tasklet(status: i32) -> ! {
+    init_runtime_mailbox();
+
+    if let Some(mailbox) = unsafe { (*addr_of_mut!(RUNTIME_MAILBOX)).as_ref() } {
+        mailbox.send(&RuntimeRequest::Exit { status });
+    }
+
+    // Should never return
+    loop {
+        core::hint::spin_loop();
+    }
+}
+
+/// Entry point for async main functions
+/// This communicates with kernel runtime via TypedMailbox
+pub fn tantraos_async_main_entry<F: Future>(future: F) -> F::Output {
+    // Register with kernel runtime via TypedMailbox
+    block_on(future)
+}
+
+/// Waker implementation that notifies via TypedMailbox
+#[allow(dead_code)]
+pub struct MailboxWaker {
+    task_id: u64,
+    mailbox: TypedMailbox<RuntimeResponse>,
+}
+
+impl MailboxWaker {
+    pub fn new(task_id: u64) -> Self {
+        Self {
+            task_id,
+            mailbox: TypedMailbox::connect(mailbox_ids::WAKER_BASE + task_id),
+        }
+    }
+
+    pub fn wake(&self) {
+        // Send wake notification to runtime
+        self.mailbox.send(&RuntimeResponse::Wake {
+            task_id: self.task_id,
+        });
+    }
+}

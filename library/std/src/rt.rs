@@ -108,6 +108,7 @@ fn handle_rt_panic<T>(e: Box<dyn Any + Send>) -> T {
 // Even though it is an `u8`, it only ever has 4 values. These are documented in
 // `compiler/rustc_session/src/config/sigpipe.rs`.
 #[cfg_attr(test, allow(dead_code))]
+#[cfg_attr(target_os = "tantraos", allow(dead_code))]
 unsafe fn init(argc: isize, argv: *const *const u8, sigpipe: u8) {
     #[cfg_attr(target_os = "teeos", allow(unused_unsafe))]
     unsafe {
@@ -149,6 +150,7 @@ pub(crate) fn cleanup() {
 // To reduce the generated code of the new `lang_start`, this function is doing
 // the real work.
 #[cfg(not(test))]
+#[cfg_attr(target_os = "tantraos", allow(dead_code))]
 fn lang_start_internal(
     main: &(dyn Fn() -> i32 + Sync + crate::panic::RefUnwindSafe),
     argc: isize,
@@ -202,10 +204,21 @@ fn lang_start<T: crate::process::Termination + 'static>(
     argv: *const *const u8,
     sigpipe: u8,
 ) -> isize {
-    lang_start_internal(
-        &move || crate::sys::backtrace::__rust_begin_short_backtrace(main).report().to_i32(),
-        argc,
-        argv,
-        sigpipe,
-    )
+    #[cfg(target_os = "tantraos")]
+    {
+        // For TantraOS, we bypass the usual runtime initialization
+        // and go directly to the TantraOS-specific implementation
+        crate::sys::pal::tantraos::rt::lang_start(main, argc, argv, sigpipe)
+    }
+
+    #[cfg(not(target_os = "tantraos"))]
+    {
+        lang_start_internal(
+            &move || crate::sys::backtrace::__rust_begin_short_backtrace(main).report().to_i32(),
+            argc,
+            argv,
+            sigpipe,
+        )
+    }
 }
+

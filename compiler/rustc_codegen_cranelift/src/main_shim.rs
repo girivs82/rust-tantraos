@@ -134,6 +134,43 @@ pub(crate) fn maybe_create_entry_wrapper(
                     types::I64 => bcx.ins().sextend(types::I64, res),
                     _ => unimplemented!("16bit systems are not yet supported"),
                 }
+            } else if tcx.sess.target.os == "tantraos" {
+                // TantraOS: Call PAL directly bypassing lang_start
+                // Call main function directly and handle result through TantraOS PAL
+                let call_inst = bcx.ins().call(main_func_ref, &[]);
+                let call_results = bcx.func.dfg.inst_results(call_inst).to_owned();
+
+                let termination_trait = tcx.require_lang_item(LangItem::Termination, DUMMY_SP);
+                let report = tcx
+                    .associated_items(termination_trait)
+                    .find_by_ident_and_kind(
+                        tcx,
+                        Ident::from_str("report"),
+                        AssocTag::Fn,
+                        termination_trait,
+                    )
+                    .unwrap();
+                let report = Instance::expect_resolve(
+                    tcx,
+                    ty::TypingEnv::fully_monomorphized(),
+                    report.def_id,
+                    tcx.mk_args(&[GenericArg::from(main_ret_ty)]),
+                    DUMMY_SP,
+                );
+
+                let report_name = tcx.symbol_name(report).name;
+                let report_sig = get_function_sig(tcx, m.target_config().default_call_conv, report);
+                let report_func_id =
+                    m.declare_function(report_name, Linkage::Import, &report_sig).unwrap();
+                let report_func_ref = m.declare_func_in_func(report_func_id, &mut bcx.func);
+
+                let report_call_inst = bcx.ins().call(report_func_ref, &call_results);
+                let res = bcx.func.dfg.inst_results(report_call_inst)[0];
+                match m.target_config().pointer_type() {
+                    types::I32 => res,
+                    types::I64 => bcx.ins().sextend(types::I64, res),
+                    _ => unimplemented!("16bit systems are not yet supported"),
+                }
             } else {
                 // Regular main fn invoked via start lang item.
                 let start_def_id = tcx.require_lang_item(LangItem::Start, DUMMY_SP);
