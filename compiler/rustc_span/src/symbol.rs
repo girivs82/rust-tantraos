@@ -2177,6 +2177,7 @@ symbols! {
         target_pointer_width,
         target_thread_local,
         target_vendor,
+        tantraos_block_on,
         tbm_target_feature,
         termination,
         termination_trait,

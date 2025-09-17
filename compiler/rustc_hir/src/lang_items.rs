@@ -340,6 +340,8 @@ language_item_table! {
     /// on the current target) as well as the user-defined `fn main` from the binary crate.
     Start,                   sym::start,               start_fn,                   Target::Fn,             GenericRequirement::Exact(1);
 
+    TantraosBlockOn,         sym::tantraos_block_on,   tantraos_block_on_fn,       Target::Fn,             GenericRequirement::Exact(1);
+
     EhPersonality,           sym::eh_personality,      eh_personality,             Target::Fn,             GenericRequirement::None;
     EhCatchTypeinfo,         sym::eh_catch_typeinfo,   eh_catch_typeinfo,          Target::Static,         GenericRequirement::None;
 

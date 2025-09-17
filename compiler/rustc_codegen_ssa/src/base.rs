@@ -547,11 +547,11 @@ pub fn maybe_create_entry_wrapper<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>>(
 
             if is_async {
                 // For async main on TantraOS:
-                // We need to properly integrate with the kernel runtime
-                // For now, we'll call main() and return 0
-                // The full implementation requires resolving runtime functions
+                // 1. Call main() to get the Future
+                // 2. Pass it to a wrapper that will handle the async execution
+                // 3. Return the result
 
-                // Call main() to get the Future
+                // Call main to get the Future
                 let _future_result = bx.call(
                     cx.type_func(&[], cx.val_ty(rust_main)),
                     None,
@@ -562,13 +562,16 @@ pub fn maybe_create_entry_wrapper<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>>(
                     None,
                 );
 
-                // TODO: Proper runtime integration
-                // This would require:
-                // 1. Resolving the block_on function from std
-                // 2. Calling it with the future
-                // 3. Returning the result
-                //
-                // For now, return 0 to indicate success
+                // For async main on TantraOS:
+                // We call main() to get the Future, but for now we just return 0
+                // A complete implementation requires:
+                // 1. Properly instantiating the generic block_on function
+                // 2. Type-erasing the future into dyn Future
+                // 3. Passing it to the runtime executor
+
+                // For now, this allows async main to compile and link successfully
+                // The future is created but not executed yet
+
                 let zero = bx.const_int(cx.type_int(), 0);
                 bx.ret(zero);
             } else {

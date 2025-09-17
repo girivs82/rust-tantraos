@@ -126,6 +126,7 @@ fn init_runtime_mailbox() {
 }
 
 /// Submit an async task to the kernel runtime via TypedMailbox
+#[cfg_attr(target_os = "tantraos", lang = "tantraos_block_on")]
 pub fn block_on<F: Future>(future: F) -> F::Output {
     init_runtime_mailbox();
 
@@ -203,17 +204,22 @@ pub fn run_async_main<F: Future>(future: F) -> F::Output {
 
 /// Special entry point for compiler-generated async main support
 /// This is called directly by the compiler for async main functions
-#[no_mangle]
+#[unsafe(no_mangle)]
 #[allow(improper_ctypes_definitions)]
 pub extern "C" fn __tantraos_async_main_wrapper(
-    main_fn: extern "C" fn() -> *mut u8,  // Pointer to the Future
+    future_ptr: *mut u8,  // Pointer to the Future returned by main
 ) -> i32 {
-    // Call main to get the Future
-    let future_ptr = main_fn();
+    // Safety: This function is only called by compiler-generated code
+    // with a valid Future pointer
 
     // For now, we can't properly execute the future without proper type info
-    // In a full implementation, we'd need to pass type information
-    // or use a different approach
+    // In a full implementation, we'd need to:
+    // 1. Type-erase the future into a dyn Future
+    // 2. Pass it to block_on
+    // 3. Return the result
+
+    // TODO: Implement actual async execution when we have proper type erasure
+    // For now, just acknowledge we received the future
 
     // Return 0 for success
     0
