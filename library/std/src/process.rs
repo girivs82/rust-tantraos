@@ -2584,3 +2584,4 @@ impl<T: Termination, E: fmt::Debug> Termination for Result<T, E> {
         }
     }
 }
+

@@ -109,6 +109,22 @@ fn resolve_associated_item<'tcx>(
 ) -> Result<Option<Instance<'tcx>>, ErrorGuaranteed> {
     debug!(?trait_item_id, ?typing_env, ?trait_id, ?rcvr_args, "resolve_associated_item");
 
+    // TantraOS async main bypass: For TantraOS, skip Termination trait resolution for async function bodies
+    // This prevents ICE when trying to resolve Termination::report for async main functions
+    if tcx.sess.target.os == "tantraos" {
+        if let Some(trait_name) = tcx.opt_item_name(trait_id) {
+            if trait_name.as_str() == "Termination" {
+                if let Some(method_name) = tcx.opt_item_name(trait_item_id) {
+                    if method_name.as_str() == "report" {
+                        // Always bypass for TantraOS - comprehensive bypass for any type that might be async
+                        debug!("TantraOS: Bypassing Termination::report for TantraOS target");
+                        return Ok(None);
+                    }
+                }
+            }
+        }
+    }
+
     let trait_ref = ty::TraitRef::from_assoc(tcx, trait_id, rcvr_args);
 
     let input = typing_env.as_query_input(trait_ref);

@@ -1,0 +1,73 @@
+Building bootstrap
+running: /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo build --manifest-path /Users/girivs/src/rust-tantraos/src/bootstrap/Cargo.toml -Zroot-dir=/Users/girivs/src/rust-tantraos --verbose
+       Fresh unicode-ident v1.0.13
+       Fresh memchr v2.7.4
+       Fresh version_check v0.9.5
+       Fresh shlex v1.3.0
+       Fresh pkg-config v0.3.31
+       Fresh clap_lex v0.7.2
+       Fresh heck v0.5.0
+       Fresh cfg-if v1.0.0
+       Fresh regex-syntax v0.8.5
+       Fresh proc-macro2 v1.0.89
+       Fresh cc v1.2.28
+       Fresh aho-corasick v1.1.3
+       Fresh anstyle v1.0.10
+       Fresh bstr v1.10.0
+       Fresh log v0.4.22
+       Fresh same-file v1.0.6
+       Fresh libc v0.2.174
+       Fresh quote v1.0.37
+       Fresh typenum v1.17.0
+       Fresh serde v1.0.215
+       Fresh crossbeam-utils v0.8.20
+       Fresh regex-automata v0.4.9
+       Fresh clap_builder v4.5.20
+       Fresh walkdir v2.5.0
+       Fresh itoa v1.0.11
+       Fresh syn v2.0.87
+       Fresh generic-array v0.14.7
+       Fresh crossbeam-epoch v0.9.18
+       Fresh cpufeatures v0.2.15
+       Fresh globset v0.4.15
+       Fresh filetime v0.2.26
+       Fresh ryu v1.0.18
+       Fresh toml v0.5.11
+       Fresh semver v1.0.23
+       Fresh cmake v0.1.54
+       Fresh object v0.36.5
+       Fresh opener v0.8.2
+       Fresh crypto-common v0.1.6
+       Fresh block-buffer v0.10.4
+       Fresh clap_derive v4.5.18
+       Fresh serde_derive v1.0.215
+       Fresh crossbeam-deque v0.8.5
+       Fresh lzma-sys v0.1.20
+       Fresh tar v0.4.44
+       Fresh serde_json v1.0.132
+       Fresh home v0.5.11
+       Fresh termcolor v1.4.1
+       Fresh clap v4.5.20
+       Fresh digest v0.10.7
+       Fresh build_helper v0.1.0 (/Users/girivs/src/rust-tantraos/src/build_helper)
+       Fresh ignore v0.4.23
+       Fresh xz2 v0.1.7
+       Fresh clap_complete v4.5.37
+       Fresh sha2 v0.10.8
+       Fresh bootstrap v0.0.0 (/Users/girivs/src/rust-tantraos/src/bootstrap)
+    Finished `dev` profile [unoptimized] target(s) in 0.05s
+running: /Users/girivs/src/rust-tantraos/build/bootstrap/debug/bootstrap build --stage 1 compiler -j 10
+ERROR: Failed to parse '/Users/girivs/src/rust-tantraos/config.toml': unknown field `ninja`, expected one of `build`, `description`, `host`, `target`, `build-dir`, `cargo`, `rustc`, `rustfmt`, `cargo-clippy`, `docs`, `compiler-docs`, `library-docs-private-items`, `docs-minification`, `submodules`, `gdb`, `lldb`, `nodejs`, `npm`, `python`, `reuse`, `locked-deps`, `vendor`, `full-bootstrap`, `bootstrap-cache-path`, `extended`, `tools`, `tool`, `verbose`, `sanitizers`, `profiler`, `cargo-native-static`, `low-priority`, `configure-args`, `local-rebuild`, `print-step-timings`, `print-step-rusage`, `check-stage`, `doc-stage`, `build-stage`, `test-stage`, `install-stage`, `dist-stage`, `bench-stage`, `patch-binaries-for-nix`, `metrics`, `android-ndk`, `optimized-compiler-builtins`, `jobs`, `compiletest-diff-tool`, `compiletest-allow-stage0`, `compiletest-use-stage0-libtest`, `tidy-extra-checks`, `ccache`, `exclude` for key `build`
+Traceback (most recent call last):
+  File "/Users/girivs/src/rust-tantraos/x.py", line 53, in <module>
+    bootstrap.main()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/girivs/src/rust-tantraos/src/bootstrap/bootstrap.py", line 1392, in main
+    bootstrap(args)
+    ~~~~~~~~~^^^^^^
+  File "/Users/girivs/src/rust-tantraos/src/bootstrap/bootstrap.py", line 1367, in bootstrap
+    run(args, env=env, verbose=build.verbose, is_bootstrap=True)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/girivs/src/rust-tantraos/src/bootstrap/bootstrap.py", line 237, in run
+    raise RuntimeError(err)
+RuntimeError: failed to run: /Users/girivs/src/rust-tantraos/build/bootstrap/debug/bootstrap build --stage 1 compiler -j 10

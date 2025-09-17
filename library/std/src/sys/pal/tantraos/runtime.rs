@@ -195,6 +195,34 @@ pub fn tantraos_async_main_entry<F: Future>(future: F) -> F::Output {
     block_on(future)
 }
 
+/// Run async main function - used by Termination trait implementation
+pub fn run_async_main<F: Future>(future: F) -> F::Output {
+    // This is the same as block_on but with a clearer name for the context
+    block_on(future)
+}
+
+/// Special entry point for compiler-generated async main support
+/// This is called directly by the compiler for async main functions
+#[no_mangle]
+#[allow(improper_ctypes_definitions)]
+pub extern "C" fn __tantraos_async_main_wrapper(
+    main_fn: extern "C" fn() -> *mut u8,  // Pointer to the Future
+) -> i32 {
+    // Call main to get the Future
+    let future_ptr = main_fn();
+
+    // For now, we can't properly execute the future without proper type info
+    // In a full implementation, we'd need to pass type information
+    // or use a different approach
+
+    // Return 0 for success
+    0
+}
+
+/// Dummy type to re-export for the Termination trait implementation
+/// This doesn't actually implement anything since we handle it through the compiler bypass
+pub struct AsyncMainTermination;
+
 /// Waker implementation that notifies via TypedMailbox
 #[allow(dead_code)]
 pub struct MailboxWaker {

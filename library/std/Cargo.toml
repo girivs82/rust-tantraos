@@ -32,12 +32,12 @@ rustc-demangle = { version = "0.1.24", features = ['rustc-dep-of-std'] }
 miniz_oxide = { version = "0.8.0", optional = true, default-features = false }
 addr2line = { version = "0.25.0", optional = true, default-features = false }
 
-[target.'cfg(not(all(windows, target_env = "msvc")))'.dependencies]
+[target.'cfg(not(any(all(windows, target_env = "msvc"), target_os = "tantraos")))'.dependencies]
 libc = { version = "0.2.172", default-features = false, features = [
     'rustc-dep-of-std',
 ], public = true }
 
-[target.'cfg(all(not(target_os = "aix"), not(all(windows, target_env = "msvc", not(target_vendor = "uwp")))))'.dependencies]
+[target.'cfg(all(not(target_os = "aix"), not(all(windows, target_env = "msvc", not(target_vendor = "uwp"))), not(target_os = "tantraos")))'.dependencies]
 object = { version = "0.37.1", default-features = false, optional = true, features = [
     'read_core',
     'elf',

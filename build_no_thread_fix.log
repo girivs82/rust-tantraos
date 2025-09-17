@@ -1,0 +1,692 @@
+Building bootstrap
+running: /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo build --manifest-path /Users/girivs/src/rust-tantraos/src/bootstrap/Cargo.toml -Zroot-dir=/Users/girivs/src/rust-tantraos --verbose
+       Fresh unicode-ident v1.0.13
+       Fresh memchr v2.7.4
+       Fresh version_check v0.9.5
+       Fresh shlex v1.3.0
+       Fresh pkg-config v0.3.31
+       Fresh regex-syntax v0.8.5
+       Fresh anstyle v1.0.10
+       Fresh cfg-if v1.0.0
+       Fresh heck v0.5.0
+       Fresh proc-macro2 v1.0.89
+       Fresh cc v1.2.28
+       Fresh aho-corasick v1.1.3
+       Fresh clap_lex v0.7.2
+       Fresh bstr v1.10.0
+       Fresh same-file v1.0.6
+       Fresh log v0.4.22
+       Fresh libc v0.2.174
+       Fresh quote v1.0.37
+       Fresh typenum v1.17.0
+       Fresh serde v1.0.215
+       Fresh crossbeam-utils v0.8.20
+       Fresh clap_builder v4.5.20
+       Fresh regex-automata v0.4.9
+       Fresh walkdir v2.5.0
+       Fresh ryu v1.0.18
+       Fresh itoa v1.0.11
+       Fresh syn v2.0.87
+       Fresh generic-array v0.14.7
+       Fresh crossbeam-epoch v0.9.18
+       Fresh globset v0.4.15
+       Fresh cpufeatures v0.2.15
+       Fresh filetime v0.2.26
+       Fresh semver v1.0.23
+       Fresh toml v0.5.11
+       Fresh serde_json v1.0.132
+       Fresh cmake v0.1.54
+       Fresh object v0.36.5
+       Fresh termcolor v1.4.1
+       Fresh crypto-common v0.1.6
+       Fresh block-buffer v0.10.4
+       Fresh clap_derive v4.5.18
+       Fresh crossbeam-deque v0.8.5
+       Fresh serde_derive v1.0.215
+       Fresh lzma-sys v0.1.20
+       Fresh tar v0.4.44
+       Fresh home v0.5.11
+       Fresh opener v0.8.2
+       Fresh digest v0.10.7
+       Fresh clap v4.5.20
+       Fresh ignore v0.4.23
+       Fresh xz2 v0.1.7
+       Fresh build_helper v0.1.0 (/Users/girivs/src/rust-tantraos/src/build_helper)
+       Fresh sha2 v0.10.8
+       Fresh clap_complete v4.5.37
+       Fresh bootstrap v0.0.0 (/Users/girivs/src/rust-tantraos/src/bootstrap)
+    Finished `dev` profile [unoptimized] target(s) in 0.02s
+running: /Users/girivs/src/rust-tantraos/build/bootstrap/debug/bootstrap build --stage 1 --target aarch64-tantraos -j 10
+WARNING: setting `optimize` to `false` is known to cause errors and should be considered unsupported. Refer to `bootstrap.example.toml` for more details.
+downloading stage0 beta artifacts
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" "--print" "sysroot" (failure_mode=Exit) (created at src/bootstrap/src/core/config/config.rs:697:13, executed at src/bootstrap/src/core/config/config.rs:700:18)
+downloading stage0 beta artifacts
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore)
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit)
+running: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore) (created at src/bootstrap/src/utils/channel.rs:47:31, executed at src/bootstrap/src/utils/channel.rs:49:50)
+running: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:63:31, executed at src/bootstrap/src/utils/channel.rs:70:14)
+running: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:72:32, executed at src/bootstrap/src/utils/channel.rs:77:14)
+running: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:79:38, executed at src/bootstrap/src/utils/channel.rs:85:14)
+WARNING: The `change-id` is missing in the `bootstrap.toml`. This means that you will not be able to track the major changes made to the bootstrap configurations.
+NOTE: to silence this warning, add `change-id = 146435` or `change-id = "ignore"` at the top of `bootstrap.toml`
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" "--print" "target-libdir" (failure_mode=Exit) (created at src/bootstrap/src/lib.rs:485:37, executed at src/bootstrap/src/lib.rs:488:14)
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" "--version" "--verbose" (failure_mode=Exit) (created at src/bootstrap/src/lib.rs:595:37, executed at src/bootstrap/src/lib.rs:598:14)
+finding compilers
+CC_aarch64-tantraos = "clang"
+CFLAGS_aarch64-tantraos = ["-ffunction-sections", "-fdata-sections", "-fPIC", "--target=aarch64-unknown-tantraos"]
+CXX_aarch64-tantraos = "clang++"
+CXXFLAGS_aarch64-tantraos = ["-ffunction-sections", "-fdata-sections", "-fPIC", "--target=aarch64-unknown-tantraos"]
+AR_aarch64-tantraos = "ar"
+CC_aarch64-apple-darwin = "cc"
+CFLAGS_aarch64-apple-darwin = ["-ffunction-sections", "-fdata-sections", "-fPIC", "--target=arm64-apple-macosx", "-mmacosx-version-min=26.0"]
+CXX_aarch64-apple-darwin = "c++"
+CXXFLAGS_aarch64-apple-darwin = ["-ffunction-sections", "-fdata-sections", "-fPIC", "--target=arm64-apple-macosx", "-mmacosx-version-min=26.0", "-stdlib=libc++"]
+AR_aarch64-apple-darwin = "ar"
+running sanity check
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/libcxx-version/libcxx-version" (failure_mode=Exit) (created at src/bootstrap/src/core/build_steps/tool.rs:1265:30, executed at src/bootstrap/src/core/build_steps/tool.rs:1265:50)
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" "--print" "target-list" (failure_mode=Exit) (created at src/bootstrap/src/core/sanity.rs:205:57, executed at src/bootstrap/src/core/sanity.rs:208:10)
+running: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore) (created at src/bootstrap/src/utils/channel.rs:47:31, executed at src/bootstrap/src/utils/channel.rs:49:50)
+running: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:63:31, executed at src/bootstrap/src/utils/channel.rs:70:14)
+running: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:72:32, executed at src/bootstrap/src/utils/channel.rs:77:14)
+running: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:79:38, executed at src/bootstrap/src/utils/channel.rs:85:14)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "ls-tree" "HEAD" "library/backtrace" (failure_mode=Exit) (created at src/bootstrap/src/core/config/config.rs:2263:20, executed at src/bootstrap/src/core/config/config.rs:2267:10)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "config" "--file" ".gitmodules" "--get-regexp" "path" (failure_mode=Exit) (created at src/bootstrap/src/lib.rs:715:22, executed at src/bootstrap/src/lib.rs:719:14)
+running: cd "src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore) (created at src/bootstrap/src/utils/channel.rs:47:31, executed at src/bootstrap/src/utils/channel.rs:49:50)
+running: cd "library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore) (created at src/bootstrap/src/utils/channel.rs:47:31, executed at src/bootstrap/src/utils/channel.rs:49:50)
+running: cd "src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:63:31, executed at src/bootstrap/src/utils/channel.rs:70:14)
+running: cd "library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:63:31, executed at src/bootstrap/src/utils/channel.rs:70:14)
+running: cd "library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:72:32, executed at src/bootstrap/src/utils/channel.rs:77:14)
+running: cd "src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:72:32, executed at src/bootstrap/src/utils/channel.rs:77:14)
+running: cd "library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:79:38, executed at src/bootstrap/src/utils/channel.rs:85:14)
+running: cd "src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit) (created at src/bootstrap/src/utils/channel.rs:79:38, executed at src/bootstrap/src/utils/channel.rs:85:14)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "ls-tree" "HEAD" "src/llvm-project" (failure_mode=Exit) (created at src/bootstrap/src/core/config/config.rs:2263:20, executed at src/bootstrap/src/core/config/config.rs:2267:10)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/library/backtrace" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "ls-tree" "HEAD" "library/backtrace" (failure_mode=Exit)
+learning about cargo
+running: RUSTC_BOOTSTRAP="1" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "metadata" "--format-version" "1" "--no-deps" "--manifest-path" "/Users/girivs/src/rust-tantraos/Cargo.toml" (failure_mode=Exit) (created at src/bootstrap/src/core/metadata.rs:80:25, executed at src/bootstrap/src/core/metadata.rs:91:54)
+running: RUSTC_BOOTSTRAP="1" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "metadata" "--format-version" "1" "--no-deps" "--manifest-path" "/Users/girivs/src/rust-tantraos/library/Cargo.toml" (failure_mode=Exit) (created at src/bootstrap/src/core/metadata.rs:80:25, executed at src/bootstrap/src/core/metadata.rs:91:54)
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1 to avoid caching bugs
+LLVM freshness: LastModifiedUpstream { upstream: "9d82de19dfae60e55c291f5f28e28cfc2c1b9630" }
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot to avoid caching bugs
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" "--print" "sysroot" (failure_mode=Exit) (created at src/bootstrap/src/lib.rs:1079:13, executed at src/bootstrap/src/lib.rs:1082:18)
+LLVM freshness: LastModifiedUpstream { upstream: "9d82de19dfae60e55c291f5f28e28cfc2c1b9630" }
+running: cd "/Users/girivs/src/rust-tantraos" && env -u MAKEFLAGS -u MFLAGS CARGO_BUILD_BUILD_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-rustc" CARGO_INCREMENTAL="0" CARGO_LOG="cargo::core::compiler::fingerprint=info" CARGO_PROFILE_DEV_CODEGEN_UNITS="16" CARGO_PROFILE_DEV_DEBUG="0" CARGO_PROFILE_DEV_DEBUG_ASSERTIONS="false" CARGO_PROFILE_DEV_OVERFLOW_CHECKS="false" CARGO_PROFILE_DEV_STRIP="false" CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER="" CARGO_TARGET_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-rustc" CC_aarch64_apple_darwin="" CFG_COMPILER_BUILD_TRIPLE="aarch64-apple-darwin" CFG_COMPILER_HOST_TRIPLE="aarch64-apple-darwin" CFG_DEFAULT_CODEGEN_BACKEND="llvm" CFG_LIBDIR_RELATIVE="lib" CFG_RELEASE="1.92.0-nightly" CFG_RELEASE_CHANNEL="nightly" CFG_VERSION="1.92.0-nightly (5b63cd28a 2025-09-16)" CFG_VER_DATE="2025-09-16" CFG_VER_HASH="5b63cd28a2480a95186d54a20b4e64ee38bfaff9" CFLAGS_aarch64_apple_darwin="" CXXFLAGS_aarch64_apple_darwin="-stdlib=libc++" CXX_aarch64_apple_darwin="" LIBC_CHECK_CFG="1" LLVM_CONFIG="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/ci-llvm/bin/llvm-config" LLVM_RUSTLLVM="1" REAL_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH" RUSTBUILD_NATIVE_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/native" RUSTC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTC_BOOTSTRAP="1" RUSTC_BREAK_ON_ICE="1" RUSTC_ERROR_METADATA_DST="/Users/girivs/src/rust-tantraos/build/tmp/extended-error-metadata" RUSTC_FORCE_UNSTABLE="1" RUSTC_HOST_FLAGS="--check-cfg=cfg(bootstrap) --cfg=bootstrap -Clinker=" RUSTC_INSTALL_BINDIR="bin" RUSTC_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_LINK_STD_INTO_RUSTC_DRIVER="1" RUSTC_LINT_FLAGS="-Wrust_2018_idioms -Wunused_lifetimes -Dwarnings -Wrustc::internal -Drustc::symbol_intern_string_literal -Wkeyword_idents_2024 -Wunreachable_pub -Wunsafe_op_in_unsafe_fn -Wunused_crate_dependencies" RUSTC_REAL="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_STAGE="0" RUSTC_SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot" RUSTC_TLS_MODEL_INITIAL_EXEC="1" RUSTC_VERBOSE="1" RUSTC_WRAPPER="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTDOC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustdoc" RUSTDOCFLAGS="--cfg=bootstrap --cfg=windows_raw_dylib -Csymbol-mangling-version=v0 -Zunstable-options --check-cfg=cfg(bootstrap) --check-cfg=cfg(llvm_enzyme) -Dwarnings -Wrustdoc::invalid_codeblock_attributes --crate-version 1.92.0-nightly\t(5b63cd28a\t2025-09-16) -Clinker= -Zcrate-attr=warn(rust_2018_idioms)" RUSTDOC_REAL="/path/to/nowhere/rustdoc/not/required" RUSTFLAGS="--cfg=bootstrap --cfg=windows_raw_dylib -Csymbol-mangling-version=v0 -Zunstable-options --check-cfg=cfg(bootstrap) --check-cfg=cfg(llvm_enzyme) -Zmacro-backtrace -Csplit-debuginfo=unpacked -Zosx-rpath-install-name -Clink-args=-Wl,-rpath,@loader_path/../lib -Alinker-messages -Zon-broken-pipe=kill -Clto=off" RUST_TEST_THREADS="10" WINAPI_NO_BUNDLED_LIBRARIES="1" __CARGO_DEFAULT_LIB_METADATA="bootstrap1.92.0" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "build" "--target" "aarch64-apple-darwin" "-Zbinary-dep-depinfo" "-j" "10" "-Zroot-dir=/Users/girivs/src/rust-tantraos" "-v" "--features" "llvm max_level_info" "--manifest-path" "/Users/girivs/src/rust-tantraos/compiler/rustc/Cargo.toml" "--message-format" "json-render-diagnostics" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "ls-tree" "HEAD" "src/llvm-project" (failure_mode=Exit)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u MAKEFLAGS -u MFLAGS CARGO_BUILD_BUILD_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std" CARGO_INCREMENTAL="0" CARGO_LOG="cargo::core::compiler::fingerprint=info" CARGO_PROFILE_DEV_CODEGEN_UNITS="16" CARGO_PROFILE_DEV_DEBUG="0" CARGO_PROFILE_DEV_DEBUG_ASSERTIONS="false" CARGO_PROFILE_DEV_OVERFLOW_CHECKS="false" CARGO_PROFILE_DEV_STRIP="false" CARGO_TARGET_AARCH64_TANTRAOS_LINKER="" CARGO_TARGET_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std" CC_aarch64_tantraos="" CFG_COMPILER_BUILD_TRIPLE="aarch64-apple-darwin" CFG_COMPILER_HOST_TRIPLE="aarch64-tantraos" CFG_RELEASE_CHANNEL="nightly" CFLAGS_aarch64_tantraos="" CXXFLAGS_aarch64_tantraos="" CXX_aarch64_tantraos="" LIBC_CHECK_CFG="1" REAL_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH" RUSTBUILD_NATIVE_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-tantraos/native" RUSTC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTC_BOOTSTRAP="1" RUSTC_BREAK_ON_ICE="1" RUSTC_ERROR_METADATA_DST="/Users/girivs/src/rust-tantraos/build/tmp/extended-error-metadata" RUSTC_FORCE_UNSTABLE="1" RUSTC_HOST_FLAGS="-Clinker=" RUSTC_INSTALL_BINDIR="bin" RUSTC_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/lib" RUSTC_LINK_STD_INTO_RUSTC_DRIVER="1" RUSTC_LINT_FLAGS="-Wrust_2018_idioms -Wunused_lifetimes -Dwarnings" RUSTC_REAL="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/bin/rustc" RUSTC_SNAPSHOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_STAGE="1" RUSTC_SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1" RUSTC_VERBOSE="1" RUSTC_WRAPPER="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTDOC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustdoc" RUSTDOCFLAGS="-Csymbol-mangling-version=legacy --check-cfg=cfg(feature,values(any())) -Zunstable-options -Dwarnings -Wrustdoc::invalid_codeblock_attributes --crate-version 1.92.0-nightly\t(5b63cd28a\t2025-09-16) -Clinker= -Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\") -Zcrate-attr=warn(rust_2018_idioms)" RUSTDOC_REAL="/path/to/nowhere/rustdoc/not/required" RUSTFLAGS="-Csymbol-mangling-version=legacy --check-cfg=cfg(feature,values(any())) -Zunstable-options -Zmacro-backtrace -Csplit-debuginfo=off -Cprefer-dynamic -Zinline-mir -Zinline-mir-preserve-debug -Zmir_strip_debuginfo=locals-in-tiny-functions -Clink-args=-Wl,-z,origin -Clink-args=-Wl,-rpath,$ORIGIN/../lib -Alinker-messages -Cembed-bitcode=yes -Clto=off -Zunstable-options -Cforce-frame-pointers=non-leaf -Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\")" RUST_COMPILER_RT_ROOT="/Users/girivs/src/rust-tantraos/src/llvm-project/compiler-rt" RUST_TEST_THREADS="10" WINAPI_NO_BUNDLED_LIBRARIES="1" __CARGO_DEFAULT_LIB_METADATA="nightlystd1.92.0" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "build" "--target" "aarch64-tantraos" "-Zbinary-dep-depinfo" "-j" "10" "-Zroot-dir=/Users/girivs/src/rust-tantraos" "-v" "--features" "backtrace panic-unwind compiler-builtins-c" "--manifest-path" "/Users/girivs/src/rust-tantraos/library/sysroot/Cargo.toml" "-p" "alloc" "-p" "compiler_builtins" "-p" "core" "-p" "panic_abort" "-p" "panic_unwind" "-p" "proc_macro" "-p" "rustc-std-workspace-core" "-p" "std" "-p" "std_detect" "-p" "sysroot" "-p" "test" "-p" "unwind" "--message-format" "json-render-diagnostics" (failure_mode=Exit)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u MAKEFLAGS -u MFLAGS CARGO_BUILD_BUILD_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-tools" CARGO_INCREMENTAL="0" CARGO_LOG="cargo::core::compiler::fingerprint=info" CARGO_PROFILE_DEV_CODEGEN_UNITS="16" CARGO_PROFILE_DEV_DEBUG="0" CARGO_PROFILE_DEV_DEBUG_ASSERTIONS="false" CARGO_PROFILE_DEV_OVERFLOW_CHECKS="false" CARGO_PROFILE_DEV_STRIP="false" CARGO_TARGET_AARCH64_APPLE_DARWIN_LINKER="" CARGO_TARGET_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-tools" CC_aarch64_apple_darwin="" CFG_COMPILER_BUILD_TRIPLE="aarch64-apple-darwin" CFG_COMPILER_HOST_TRIPLE="aarch64-apple-darwin" CFG_RELEASE="1.92.0-nightly" CFG_RELEASE_CHANNEL="nightly" CFG_RELEASE_NUM="1.92.0" CFG_VERSION="1.92.0-nightly (5b63cd28a 2025-09-16)" CFG_VER_DATE="2025-09-16" CFG_VER_HASH="5b63cd28a2480a95186d54a20b4e64ee38bfaff9" CFLAGS_aarch64_apple_darwin="" CXXFLAGS_aarch64_apple_darwin="-stdlib=libc++" CXX_aarch64_apple_darwin="" DOC_RUST_LANG_ORG_CHANNEL="https://doc.rust-lang.org/nightly" FORCE_ON_BROKEN_PIPE_KILL="-Zon-broken-pipe=kill" JEMALLOC_SYS_WITH_LG_PAGE="16" LIBC_CHECK_CFG="1" LZMA_API_STATIC="1" REAL_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH" RUSTBUILD_NATIVE_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/native" RUSTC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTC_BOOTSTRAP="1" RUSTC_BREAK_ON_ICE="1" RUSTC_ERROR_METADATA_DST="/Users/girivs/src/rust-tantraos/build/tmp/extended-error-metadata" RUSTC_HOST_FLAGS="--check-cfg=cfg(bootstrap) --cfg=bootstrap -Clinker=" RUSTC_INSTALL_BINDIR="bin" RUSTC_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_LINK_STD_INTO_RUSTC_DRIVER="1" RUSTC_LINT_FLAGS="-Wrust_2018_idioms -Wunused_lifetimes -Dwarnings" RUSTC_REAL="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_STAGE="0" RUSTC_SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot" RUSTC_TLS_MODEL_INITIAL_EXEC="1" RUSTC_VERBOSE="1" RUSTC_WRAPPER="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTDOC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustdoc" RUSTDOCFLAGS="--cfg=bootstrap --cfg=windows_raw_dylib -Csymbol-mangling-version=v0 -Zunstable-options --check-cfg=cfg(bootstrap) --check-cfg=cfg(llvm_enzyme) --check-cfg=cfg(rust_analyzer) -Dwarnings -Wrustdoc::invalid_codeblock_attributes --crate-version 1.92.0-nightly\t(5b63cd28a\t2025-09-16) -Clinker=" RUSTDOC_REAL="/path/to/nowhere/rustdoc/not/required" RUSTFLAGS="--cfg=bootstrap --cfg=windows_raw_dylib -Csymbol-mangling-version=v0 -Zunstable-options --check-cfg=cfg(bootstrap) --check-cfg=cfg(llvm_enzyme) --check-cfg=cfg(rust_analyzer) -Zmacro-backtrace -Csplit-debuginfo=unpacked -Zosx-rpath-install-name -Clink-args=-Wl,-rpath,@loader_path/../lib -Alinker-messages -Zunstable-options" RUST_TEST_THREADS="10" SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot" __CARGO_DEFAULT_LIB_METADATA="bootstraptool-rustc1.92.0" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "build" "--target" "aarch64-apple-darwin" "-Zbinary-dep-depinfo" "-j" "10" "-Zroot-dir=/Users/girivs/src/rust-tantraos" "-v" "--manifest-path" "/Users/girivs/src/rust-tantraos/src/tools/rustdoc/Cargo.toml" "--message-format" "json-render-diagnostics" (failure_mode=Exit)
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1 to avoid caching bugs
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/lib/rustlib/aarch64-apple-darwin/lib to avoid caching bugs
+LLVM freshness: LastModifiedUpstream { upstream: "9d82de19dfae60e55c291f5f28e28cfc2c1b9630" }
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/ci-llvm/bin/llvm-config" "--version" (failure_mode=Exit) (created at src/bootstrap/src/core/build_steps/llvm.rs:599:5, executed at src/bootstrap/src/core/build_steps/llvm.rs:602:10)
+running: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/ci-llvm/bin/llvm-config" "--bindir" (failure_mode=Exit) (created at src/bootstrap/src/core/build_steps/compile.rs:2024:41, executed at src/bootstrap/src/core/build_steps/compile.rs:2027:22)
+/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/ci-llvm/bin/llvm-strip does not exist; skipping copy
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot to avoid caching bugs
+LLVM freshness: LastModifiedUpstream { upstream: "9d82de19dfae60e55c291f5f28e28cfc2c1b9630" }
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot/lib/rustlib/aarch64-apple-darwin/lib to avoid caching bugs
+using sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot
+LLVM freshness: LastModifiedUpstream { upstream: "9d82de19dfae60e55c291f5f28e28cfc2c1b9630" }
+Cache hit: "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/ci-llvm/bin/llvm-config" "--version" (failure_mode=Exit)
+Building stage1 compiler artifacts (stage0 -> stage1, aarch64-apple-darwin)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u MAKEFLAGS -u MFLAGS AR_aarch64_apple_darwin="ar" CARGO_BUILD_BUILD_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-rustc" CARGO_INCREMENTAL="0" CARGO_LOG="cargo::core::compiler::fingerprint=info" CARGO_PROFILE_DEV_CODEGEN_UNITS="16" CARGO_PROFILE_DEV_DEBUG="0" CARGO_PROFILE_DEV_DEBUG_ASSERTIONS="false" CARGO_PROFILE_DEV_OVERFLOW_CHECKS="false" CARGO_PROFILE_DEV_STRIP="false" CARGO_TARGET_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-rustc" CC_aarch64_apple_darwin="cc" CFG_COMPILER_BUILD_TRIPLE="aarch64-apple-darwin" CFG_COMPILER_HOST_TRIPLE="aarch64-apple-darwin" CFG_DEFAULT_CODEGEN_BACKEND="llvm" CFG_LIBDIR_RELATIVE="lib" CFG_RELEASE="1.92.0-nightly" CFG_RELEASE_CHANNEL="nightly" CFG_VERSION="1.92.0-nightly (5b63cd28a 2025-09-16)" CFG_VER_DATE="2025-09-16" CFG_VER_HASH="5b63cd28a2480a95186d54a20b4e64ee38bfaff9" CFLAGS_aarch64_apple_darwin="" CXXFLAGS_aarch64_apple_darwin="-stdlib=libc++" CXX_aarch64_apple_darwin="c++" LIBC_CHECK_CFG="1" LLVM_CONFIG="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/ci-llvm/bin/llvm-config" LLVM_RUSTLLVM="1" RANLIB_aarch64_apple_darwin="ar s" REAL_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH" RUSTBUILD_NATIVE_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/native" RUSTC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTC_BOOTSTRAP="1" RUSTC_BREAK_ON_ICE="1" RUSTC_ERROR_METADATA_DST="/Users/girivs/src/rust-tantraos/build/tmp/extended-error-metadata" RUSTC_FORCE_UNSTABLE="1" RUSTC_HOST_FLAGS="--check-cfg=cfg(bootstrap) --cfg=bootstrap" RUSTC_INSTALL_BINDIR="bin" RUSTC_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_LINK_STD_INTO_RUSTC_DRIVER="1" RUSTC_LINT_FLAGS="-Wrust_2018_idioms -Wunused_lifetimes -Dwarnings -Wrustc::internal -Drustc::symbol_intern_string_literal -Wkeyword_idents_2024 -Wunreachable_pub -Wunsafe_op_in_unsafe_fn -Wunused_crate_dependencies" RUSTC_REAL="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_STAGE="0" RUSTC_SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0-sysroot" RUSTC_TLS_MODEL_INITIAL_EXEC="1" RUSTC_VERBOSE="1" RUSTC_WRAPPER="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTDOC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustdoc" RUSTDOCFLAGS="--cfg=bootstrap --cfg=windows_raw_dylib -Csymbol-mangling-version=v0 -Zunstable-options --check-cfg=cfg(bootstrap) --check-cfg=cfg(llvm_enzyme) -Dwarnings -Wrustdoc::invalid_codeblock_attributes --crate-version 1.92.0-nightly\t(5b63cd28a\t2025-09-16) -Zcrate-attr=warn(rust_2018_idioms)" RUSTDOC_REAL="/path/to/nowhere/rustdoc/not/required" RUSTFLAGS="--cfg=bootstrap --cfg=windows_raw_dylib -Csymbol-mangling-version=v0 -Zunstable-options --check-cfg=cfg(bootstrap) --check-cfg=cfg(llvm_enzyme) -Zmacro-backtrace -Csplit-debuginfo=unpacked -Zosx-rpath-install-name -Clink-args=-Wl,-rpath,@loader_path/../lib -Alinker-messages -Zon-broken-pipe=kill -Clto=off" RUST_TEST_THREADS="10" WINAPI_NO_BUNDLED_LIBRARIES="1" __CARGO_DEFAULT_LIB_METADATA="bootstrap1.92.0" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "build" "--target" "aarch64-apple-darwin" "-Zbinary-dep-depinfo" "-j" "10" "-Zroot-dir=/Users/girivs/src/rust-tantraos" "-v" "--features" "llvm max_level_info" "--manifest-path" "/Users/girivs/src/rust-tantraos/compiler/rustc/Cargo.toml" "--message-format" "json-render-diagnostics" (failure_mode=Exit)
+       Fresh unicode-ident v1.0.18
+       Fresh cfg-if v1.0.1
+       Fresh stable_deref_trait v1.2.0
+       Fresh bitflags v2.9.3
+       Fresh proc-macro2 v1.0.101
+       Fresh allocator-api2 v0.2.21
+       Fresh equivalent v1.0.2
+       Fresh once_cell v1.21.3
+       Fresh foldhash v0.1.5
+       Fresh autocfg v1.5.0
+       Fresh version_check v0.9.5
+       Fresh quote v1.0.40
+       Fresh libc v0.2.174
+       Fresh proc-macro-hack v0.5.20+deprecated
+       Fresh hashbrown v0.15.5
+       Fresh tracing-core v0.1.34
+       Fresh syn v2.0.106
+       Fresh indexmap v2.10.0
+       Fresh log v0.4.27
+       Fresh scopeguard v1.2.0
+       Fresh pin-project-lite v0.2.16
+       Fresh synstructure v0.13.2
+       Fresh displaydoc v0.2.5
+       Fresh zerovec-derive v0.11.1
+       Fresh typenum v1.18.0
+       Fresh getrandom v0.3.3
+       Fresh tracing-attributes v0.1.30
+       Fresh lock_api v0.4.13
+       Fresh parking_lot_core v0.9.11
+       Fresh zerofrom-derive v0.1.6
+       Fresh yoke-derive v0.8.0
+       Fresh generic-array v0.14.7
+       Fresh tracing v0.1.41
+       Fresh parking_lot v0.12.4
+       Fresh errno v0.3.13
+       Fresh zerofrom v0.1.6
+       Fresh crossbeam-utils v0.8.21
+       Fresh block-buffer v0.10.4
+       Fresh crypto-common v0.1.6
+       Fresh rustc-stable-hash v0.1.2
+       Fresh rustix v1.0.8
+       Fresh yoke v0.8.0
+       Fresh unic-langid-macros-impl v0.9.6
+       Fresh crossbeam-epoch v0.9.18
+       Fresh rustc_hashes v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_hashes)
+       Fresh digest v0.10.7
+       Fresh aho-corasick v1.1.3
+       Fresh regex-syntax v0.8.5
+       Fresh zerovec v0.11.4
+       Fresh rustc-hash v1.1.0
+       Fresh fastrand v2.3.0
+       Fresh itoa v1.0.15
+       Fresh thin-vec v0.2.14
+       Fresh regex-automata v0.4.9
+       Fresh rustc_macros v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_macros)
+       Fresh psm v0.1.26
+       Fresh crossbeam-deque v0.8.6
+       Fresh tinystr v0.8.1
+       Fresh rustc_serialize v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_serialize)
+       Fresh tempfile v3.20.0
+       Fresh rustc_index_macros v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_index_macros)
+       Fresh thiserror-impl v2.0.15
+       Fresh cpufeatures v0.2.17
+       Fresh arrayvec v0.7.6
+       Fresh either v1.15.0
+       Fresh unic-langid-impl v0.9.6
+       Fresh rustc_index v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_index)
+       Fresh measureme v12.0.3
+       Fresh stacker v0.1.21
+       Fresh rustc_thread_pool v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_thread_pool)
+       Fresh ena v0.14.3
+       Fresh memmap2 v0.2.3
+       Fresh jobserver v0.1.33
+       Fresh rustc_arena v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_arena)
+       Fresh elsa v1.11.2
+       Fresh constant_time_eq v0.3.1
+       Fresh arrayref v0.3.9
+       Fresh rustc_graphviz v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_graphviz)
+       Fresh zerocopy v0.8.26
+       Fresh sha2 v0.10.9
+       Fresh sha1 v0.10.6
+       Fresh blake3 v1.8.2
+       Fresh rustc_data_structures v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_data_structures)
+       Fresh md-5 v0.10.6
+       Fresh derive-where v1.6.0
+       Fresh writeable v0.6.1
+       Fresh scoped-tls v1.0.1
+       Fresh litemap v0.8.0
+       Fresh ppv-lite86 v0.2.21
+       Fresh zerotrie v0.2.2
+       Fresh rustc_span v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_span)
+       Fresh icu_locale_core v2.0.0
+       Fresh rustc-literal-escaper v0.0.5
+       Fresh potential_utf v0.1.2
+       Fresh unicode-properties v0.1.3
+       Fresh unicode-xid v0.2.6
+       Fresh icu_provider v2.0.0
+       Fresh icu_collections v2.0.0
+       Fresh rustc_lexer v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_lexer)
+       Fresh rustc_ast_ir v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_ast_ir)
+       Fresh icu_locale_data v2.0.0
+       Fresh icu_list v2.0.0
+       Fresh rustc_ast v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_ast)
+       Fresh itertools v0.12.1
+       Fresh serde_derive v1.0.219
+       Fresh rand_core v0.9.3
+       Fresh icu_locale v2.0.0
+       Fresh rustc_ast_pretty v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_ast_pretty)
+       Fresh serde v1.0.219
+       Fresh rand_chacha v0.9.0
+       Fresh unic-langid-macros v0.9.6
+       Fresh rustc_baked_icu_data v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_baked_icu_data)
+       Fresh crc32fast v1.5.0
+       Fresh ryu v1.0.20
+       Fresh unic-langid v0.9.6
+       Fresh rand v0.9.2
+       Fresh rand_xoshiro v0.7.0
+       Fresh serde_derive_internals v0.29.1
+       Fresh rustc_error_messages v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_error_messages)
+       Fresh serde_json v1.0.142
+       Fresh wasmparser v0.236.1
+       Fresh ref-cast-impl v1.0.24
+       Fresh schemars_derive v1.0.4
+       Fresh rustc_hir_id v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_hir_id)
+       Fresh ident_case v1.0.1
+       Fresh fnv v1.0.7
+       Fresh object v0.37.3
+       Fresh rustc_abi v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_abi)
+       Fresh ref-cast v1.0.24
+       Fresh dyn-clone v1.0.19
+       Fresh rustc-hash v2.1.1
+       Fresh strsim v0.11.1
+       Fresh thiserror v2.0.15
+       Fresh serde_path_to_error v0.1.17
+       Fresh rustc_fs_util v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_fs_util)
+       Fresh memchr v2.7.5
+       Fresh schemars v1.0.4
+       Fresh type-map v0.5.1
+       Fresh darling_core v0.20.11
+       Fresh fluent-syntax v0.12.0
+       Fresh intl_pluralrules v7.0.2
+       Fresh fluent-langneg v0.13.0
+       Fresh odht v0.3.1
+       Fresh unicode-width v0.2.1
+       Fresh smallvec v1.15.1
+       Fresh intl-memoizer v0.5.3
+       Fresh darling_macro v0.20.11
+       Fresh rustc_target v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_target)
+       Fresh self_cell v1.2.0
+       Fresh anstyle v1.0.11
+       Fresh rustc_lint_defs v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_lint_defs)
+       Fresh termize v0.2.0
+       Fresh rustc_error_codes v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_error_codes)
+       Fresh termcolor v1.4.1
+       Fresh darling v0.20.11
+       Fresh rustc_hir v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_hir)
+       Fresh fluent-bundle v0.16.0
+       Fresh annotate-snippets v0.11.5
+       Fresh getopts v0.2.24
+       Fresh rustc_type_ir_macros v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_type_ir_macros)
+       Fresh datafrog v2.0.1
+       Fresh gsgdt v0.1.2
+       Fresh tinyvec_macros v0.1.1
+       Fresh rustc_fluent_macro v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_fluent_macro)
+       Fresh derive_setters v0.1.8
+       Fresh rustc_feature v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_feature)
+       Fresh rustc_type_ir v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_type_ir)
+       Fresh polonius-engine v0.13.0
+       Fresh rustc_hir_pretty v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_hir_pretty)
+       Fresh tinyvec v1.9.0
+       Fresh rustc_parse_format v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_parse_format)
+       Fresh getrandom v0.2.16
+       Fresh rustc_errors v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_errors)
+       Fresh rustc_apfloat v0.2.3+llvm-462a31f5a5ab
+       Fresh unicode-normalization v0.1.24
+       Fresh rustc_next_trait_solver v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_next_trait_solver)
+       Fresh rand_core v0.6.4
+       Fresh regex v1.11.1
+       Fresh rustc_proc_macro v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_proc_macro)
+       Fresh static_assertions v1.1.0
+       Fresh adler2 v2.0.1
+       Fresh rustc_session v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_session)
+       Fresh rand_chacha v0.3.1
+       Fresh miniz_oxide v0.8.9
+       Fresh unicode-script v0.5.7
+       Fresh libloading v0.8.8
+       Fresh regex-syntax v0.6.29
+       Fresh fallible-iterator v0.3.0
+       Fresh lazy_static v1.5.0
+       Fresh rustc_query_system v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_query_system)
+       Fresh rustc_parse v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_parse)
+       Fresh rand v0.8.5
+       Fresh flate2 v1.1.2
+       Fresh unicode-security v0.1.2
+       Fresh gimli v0.31.1
+       Fresh regex-automata v0.1.10
+       Fresh leb128 v0.2.5
+       Fresh shlex v1.3.0
+       Fresh rustc-demangle v0.1.26
+       Fresh rustc_middle v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_middle)
+       Fresh rustc_attr_parsing v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_attr_parsing)
+       Fresh twox-hash v1.6.3
+       Fresh cfg_aliases v0.2.1
+       Fresh overload v0.1.1
+       Fresh punycode v0.4.1
+       Fresh cc v1.2.16
+       Fresh wasm-encoder v0.219.2
+       Fresh matchers v0.1.0
+       Fresh rustc_infer v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_infer)
+       Fresh rustc_transmute v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_transmute)
+       Fresh rustc_ast_passes v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_ast_passes)
+       Fresh rustc_incremental v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_incremental)
+       Fresh ruzstd v0.7.3
+       Fresh rustc_mir_dataflow v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_mir_dataflow)
+       Fresh rustc_symbol_mangling v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_symbol_mangling)
+       Fresh rustc_pattern_analysis v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_pattern_analysis)
+       Fresh rustc_trait_selection v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_trait_selection)
+       Fresh rustc_expand v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_expand)
+       Fresh object v0.36.7
+       Fresh nu-ansi-term v0.46.0
+       Fresh sharded-slab v0.1.7
+       Fresh ar_archive_writer v0.5.1
+       Fresh bstr v1.12.0
+       Fresh rustc_windows_rc v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_windows_rc)
+       Fresh thread_local v1.1.9
+       Fresh rustc_metadata v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_metadata)
+       Fresh rustc_lint v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_lint)
+       Fresh rustc_ty_utils v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_ty_utils)
+       Fresh thorin-dwp v0.9.0
+       Fresh pulldown-cmark-escape v0.11.0
+       Fresh unicase v2.8.1
+       Fresh pathdiff v0.2.3
+       Fresh rustc_traits v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_traits)
+       Fresh rustc_const_eval v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_const_eval)
+       Fresh rustc_llvm v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_llvm)
+       Fresh rustc_codegen_ssa v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_codegen_ssa)
+       Fresh rustc_mir_build v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_mir_build)
+       Fresh pulldown-cmark v0.11.3
+       Fresh rustc_privacy v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_privacy)
+       Fresh rustc_sanitizers v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_sanitizers)
+       Fresh rustc_hir_analysis v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_hir_analysis)
+       Fresh tracing-subscriber v0.3.18
+       Fresh rustc_ast_lowering v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_ast_lowering)
+       Fresh tracing-log v0.2.0
+       Fresh nu-ansi-term v0.50.1
+       Fresh rustc_mir_transform v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_mir_transform)
+       Fresh rustc_passes v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_passes)
+       Fresh rustc_hir_typeck v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_hir_typeck)
+       Fresh nix v0.30.1
+       Fresh rustc_codegen_llvm v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_codegen_llvm)
+       Fresh rustc_resolve v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_resolve)
+       Fresh rustc_borrowck v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_borrowck)
+       Fresh rustc_builtin_macros v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_builtin_macros)
+       Fresh rustc_public_bridge v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_public_bridge)
+       Fresh tracing-tree v0.3.1
+       Fresh rustc_monomorphize v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_monomorphize)
+       Fresh rustc_query_impl v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_query_impl)
+       Fresh ctrlc v3.4.7
+       Fresh rustc_public v0.1.0-preview (/Users/girivs/src/rust-tantraos/compiler/rustc_public)
+       Fresh jiff v0.2.15
+       Fresh rustc_interface v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_interface)
+       Fresh rustc_log v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_log)
+       Fresh rustc_driver_impl v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_driver_impl)
+       Fresh rustc_driver v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc_driver)
+       Fresh rustc-main v0.0.0 (/Users/girivs/src/rust-tantraos/compiler/rustc)
+    Finished `dev` profile [unoptimized] target(s) in 0.13s
+Creating a sysroot for stage1 compiler (use `rustup toolchain link 'name' build/host/stage1`)
+Removing sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/lib/rustlib/aarch64-tantraos/lib to avoid caching bugs
+using sysroot /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" (failure_mode=Ignore)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "log" "-1" "--date=short" "--pretty=format:%cd" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "--short=9" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos/src/llvm-project" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "rev-parse" "HEAD" (failure_mode=Exit)
+Cache hit: cd "/Users/girivs/src/rust-tantraos" && env -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_DIR -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY -u GIT_WORK_TREE "git" "ls-tree" "HEAD" "src/llvm-project" (failure_mode=Exit)
+Building stage1 library artifacts{alloc, compiler_builtins, core, panic_abort, panic_unwind, proc_macro, rustc-std-workspace-core, std, std_detect, sysroot, test, unwind} (stage1:aarch64-apple-darwin -> stage1:aarch64-tantraos)
+running: cd "/Users/girivs/src/rust-tantraos" && env -u MAKEFLAGS -u MFLAGS AR_aarch64_tantraos="ar" CARGO_BUILD_BUILD_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std" CARGO_INCREMENTAL="0" CARGO_LOG="cargo::core::compiler::fingerprint=info" CARGO_PROFILE_DEV_CODEGEN_UNITS="16" CARGO_PROFILE_DEV_DEBUG="0" CARGO_PROFILE_DEV_DEBUG_ASSERTIONS="false" CARGO_PROFILE_DEV_OVERFLOW_CHECKS="false" CARGO_PROFILE_DEV_STRIP="false" CARGO_TARGET_AARCH64_TANTRAOS_LINKER="rust-lld" CARGO_TARGET_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std" CC_aarch64_tantraos="clang" CFG_COMPILER_BUILD_TRIPLE="aarch64-apple-darwin" CFG_COMPILER_HOST_TRIPLE="aarch64-tantraos" CFG_RELEASE_CHANNEL="nightly" CFLAGS_aarch64_tantraos="" CXXFLAGS_aarch64_tantraos="" CXX_aarch64_tantraos="clang++" LIBC_CHECK_CFG="1" RANLIB_aarch64_tantraos="ar s" REAL_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH" RUSTBUILD_NATIVE_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-tantraos/native" RUSTC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTC_BOOTSTRAP="1" RUSTC_BREAK_ON_ICE="1" RUSTC_ERROR_METADATA_DST="/Users/girivs/src/rust-tantraos/build/tmp/extended-error-metadata" RUSTC_FORCE_UNSTABLE="1" RUSTC_INSTALL_BINDIR="bin" RUSTC_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/lib" RUSTC_LINK_STD_INTO_RUSTC_DRIVER="1" RUSTC_LINT_FLAGS="-Wrust_2018_idioms -Wunused_lifetimes -Dwarnings" RUSTC_REAL="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/bin/rustc" RUSTC_SNAPSHOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_STAGE="1" RUSTC_SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1" RUSTC_VERBOSE="1" RUSTC_WRAPPER="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTDOC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustdoc" RUSTDOCFLAGS="-Csymbol-mangling-version=legacy --check-cfg=cfg(feature,values(any())) -Zunstable-options -Dwarnings -Wrustdoc::invalid_codeblock_attributes --crate-version 1.92.0-nightly\t(5b63cd28a\t2025-09-16) -Clinker=rust-lld -Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\") -Zcrate-attr=warn(rust_2018_idioms)" RUSTDOC_REAL="/path/to/nowhere/rustdoc/not/required" RUSTFLAGS="-Csymbol-mangling-version=legacy --check-cfg=cfg(feature,values(any())) -Zunstable-options -Zmacro-backtrace -Csplit-debuginfo=off -Cprefer-dynamic -Zinline-mir -Zinline-mir-preserve-debug -Zmir_strip_debuginfo=locals-in-tiny-functions -Clink-args=-Wl,-z,origin -Clink-args=-Wl,-rpath,$ORIGIN/../lib -Alinker-messages -Cembed-bitcode=yes -Clto=off -Zunstable-options -Cforce-frame-pointers=non-leaf -Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\")" RUST_COMPILER_RT_ROOT="/Users/girivs/src/rust-tantraos/src/llvm-project/compiler-rt" RUST_TEST_THREADS="10" WINAPI_NO_BUNDLED_LIBRARIES="1" __CARGO_DEFAULT_LIB_METADATA="nightlystd1.92.0" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "build" "--target" "aarch64-tantraos" "-Zbinary-dep-depinfo" "-j" "10" "-Zroot-dir=/Users/girivs/src/rust-tantraos" "-v" "--features" "backtrace panic-unwind compiler-builtins-c" "--manifest-path" "/Users/girivs/src/rust-tantraos/library/sysroot/Cargo.toml" "-p" "alloc" "-p" "compiler_builtins" "-p" "core" "-p" "panic_abort" "-p" "panic_unwind" "-p" "proc_macro" "-p" "rustc-std-workspace-core" "-p" "std" "-p" "std_detect" "-p" "sysroot" "-p" "test" "-p" "unwind" "--message-format" "json-render-diagnostics" (failure_mode=Exit)
+   0.012013834s  INFO prepare_target{force=false package_id=proc_macro v0.0.0 (/Users/girivs/src/rust-tantraos/library/proc_macro) target="proc_macro"}: cargo::core::compiler::fingerprint: fingerprint error for proc_macro v0.0.0 (/Users/girivs/src/rust-tantraos/library/proc_macro)/Build/TargetInner { name_inferred: true, ..: lib_target("proc_macro", ["lib"], "/Users/girivs/src/rust-tantraos/library/proc_macro/src/lib.rs", Edition2024) }
+   0.012027084s  INFO prepare_target{force=false package_id=proc_macro v0.0.0 (/Users/girivs/src/rust-tantraos/library/proc_macro) target="proc_macro"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/proc_macro-ac90324c5cb03cb8/lib-proc_macro`
+
+Caused by:
+    No such file or directory (os error 2)
+   0.012091542s  INFO prepare_target{force=false package_id=rustc-literal-escaper v0.0.5 target="rustc_literal_escaper"}: cargo::core::compiler::fingerprint: fingerprint error for rustc-literal-escaper v0.0.5/Build/TargetInner { ..: lib_target("rustc_literal_escaper", ["lib"], "/Users/girivs/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustc-literal-escaper-0.0.5/src/lib.rs", Edition2021) }
+   0.012094459s  INFO prepare_target{force=false package_id=rustc-literal-escaper v0.0.5 target="rustc_literal_escaper"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/rustc-literal-escaper-684210f40b1f786d/lib-rustc_literal_escaper`
+
+Caused by:
+    No such file or directory (os error 2)
+   0.012134584s  INFO prepare_target{force=false package_id=rustc-std-workspace-std v1.99.0 (/Users/girivs/src/rust-tantraos/library/rustc-std-workspace-std) target="rustc_std_workspace_std"}: cargo::core::compiler::fingerprint: fingerprint error for rustc-std-workspace-std v1.99.0 (/Users/girivs/src/rust-tantraos/library/rustc-std-workspace-std)/Build/TargetInner { name_inferred: true, tested: false, benched: false, doc: false, ..: lib_target("rustc_std_workspace_std", ["lib"], "/Users/girivs/src/rust-tantraos/library/rustc-std-workspace-std/lib.rs", Edition2024) }
+   0.012138000s  INFO prepare_target{force=false package_id=rustc-std-workspace-std v1.99.0 (/Users/girivs/src/rust-tantraos/library/rustc-std-workspace-std) target="rustc_std_workspace_std"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/rustc-std-workspace-std-8148ba09a21042bf/lib-rustc_std_workspace_std`
+
+Caused by:
+    No such file or directory (os error 2)
+   0.012176459s  INFO prepare_target{force=false package_id=std v0.0.0 (/Users/girivs/src/rust-tantraos/library/std) target="std"}: cargo::core::compiler::fingerprint: fingerprint error for std v0.0.0 (/Users/girivs/src/rust-tantraos/library/std)/Build/TargetInner { name_inferred: true, ..: lib_target("std", ["dylib", "rlib"], "/Users/girivs/src/rust-tantraos/library/std/src/lib.rs", Edition2024) }
+   0.012179709s  INFO prepare_target{force=false package_id=std v0.0.0 (/Users/girivs/src/rust-tantraos/library/std) target="std"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/std-5626981e099ee37b/lib-std`
+
+Caused by:
+    No such file or directory (os error 2)
+   0.012611750s  INFO prepare_target{force=false package_id=sysroot v0.0.0 (/Users/girivs/src/rust-tantraos/library/sysroot) target="sysroot"}: cargo::core::compiler::fingerprint: fingerprint error for sysroot v0.0.0 (/Users/girivs/src/rust-tantraos/library/sysroot)/Build/TargetInner { name_inferred: true, tested: false, benched: false, doc: false, ..: lib_target("sysroot", ["lib"], "/Users/girivs/src/rust-tantraos/library/sysroot/src/lib.rs", Edition2024) }
+   0.012614084s  INFO prepare_target{force=false package_id=sysroot v0.0.0 (/Users/girivs/src/rust-tantraos/library/sysroot) target="sysroot"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/sysroot-8204e4ccbf2c4388/lib-sysroot`
+
+Caused by:
+    No such file or directory (os error 2)
+   0.012651334s  INFO prepare_target{force=false package_id=test v0.0.0 (/Users/girivs/src/rust-tantraos/library/test) target="test"}: cargo::core::compiler::fingerprint: fingerprint error for test v0.0.0 (/Users/girivs/src/rust-tantraos/library/test)/Build/TargetInner { name_inferred: true, ..: lib_target("test", ["lib"], "/Users/girivs/src/rust-tantraos/library/test/src/lib.rs", Edition2024) }
+   0.012654250s  INFO prepare_target{force=false package_id=test v0.0.0 (/Users/girivs/src/rust-tantraos/library/test) target="test"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/test-6cdc893b570d2489/lib-test`
+
+Caused by:
+    No such file or directory (os error 2)
+   0.012686084s  INFO prepare_target{force=false package_id=getopts v0.2.24 target="getopts"}: cargo::core::compiler::fingerprint: fingerprint error for getopts v0.2.24/Build/TargetInner { ..: lib_target("getopts", ["lib"], "/Users/girivs/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getopts-0.2.24/src/lib.rs", Edition2021) }
+   0.012688584s  INFO prepare_target{force=false package_id=getopts v0.2.24 target="getopts"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/.fingerprint/getopts-e7ff20af737f780d/lib-getopts`
+
+Caused by:
+    No such file or directory (os error 2)
+       Fresh shlex v1.3.0
+       Fresh cc v1.2.0
+       Fresh core v0.0.0 (/Users/girivs/src/rust-tantraos/library/core)
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: clang: warning: mismatch between architecture and environment in target triple 'aarch64-unknown-tantraos-eabi'; did you mean 'aarch64-none-elf'? [-Winvalid-command-line-argument]
+warning: compiler_builtins@0.1.160: warning: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: archive library: /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/build/compiler_builtins-d931ed850ff3b322/out/libcompiler-rt.a the table of contents is empty (no object file members in the library define global symbols)
+       Fresh compiler_builtins v0.1.160 (/Users/girivs/src/rust-tantraos/library/compiler-builtins/compiler-builtins)
+       Fresh rustc-std-workspace-core v1.99.0 (/Users/girivs/src/rust-tantraos/library/rustc-std-workspace-core)
+       Fresh alloc v0.0.0 (/Users/girivs/src/rust-tantraos/library/alloc)
+       Fresh rustc-std-workspace-alloc v1.99.0 (/Users/girivs/src/rust-tantraos/library/rustc-std-workspace-alloc)
+       Fresh libc v0.2.175
+       Fresh adler2 v2.0.1
+       Fresh memchr v2.7.5
+       Fresh cfg-if v1.0.1
+       Fresh rustc-demangle v0.1.26
+       Fresh panic_abort v0.0.0 (/Users/girivs/src/rust-tantraos/library/panic_abort)
+       Fresh unwind v0.0.0 (/Users/girivs/src/rust-tantraos/library/unwind)
+       Fresh gimli v0.32.0
+       Fresh miniz_oxide v0.8.9
+       Fresh object v0.37.3
+       Fresh std_detect v0.1.5 (/Users/girivs/src/rust-tantraos/library/std_detect)
+       Fresh hashbrown v0.15.5
+       Fresh addr2line v0.25.0
+       Fresh panic_unwind v0.0.0 (/Users/girivs/src/rust-tantraos/library/panic_unwind)
+   Compiling std v0.0.0 (/Users/girivs/src/rust-tantraos/library/std)
+     Running `/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc /Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc --crate-name std --edition=2024 library/std/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type dylib --crate-type rlib --emit=dep-info,link -C embed-bitcode=no -C codegen-units=16 --warn=unexpected_cfgs --check-cfg 'cfg(feature, values(any()))' --check-cfg 'cfg(target_has_reliable_f16)' --check-cfg 'cfg(target_has_reliable_f16_math)' --check-cfg 'cfg(target_has_reliable_f128)' --check-cfg 'cfg(target_has_reliable_f128_math)' -C debug-assertions=off --cfg 'feature="addr2line"' --cfg 'feature="backtrace"' --cfg 'feature="compiler-builtins-c"' --cfg 'feature="miniz_oxide"' --cfg 'feature="object"' --cfg 'feature="panic-unwind"' --cfg 'feature="std_detect_dlsym_getauxval"' --cfg 'feature="std_detect_file_io"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("addr2line", "backtrace", "backtrace-trace-only", "compiler-builtins-c", "compiler-builtins-mem", "compiler-builtins-no-f16-f128", "debug_refcell", "llvm-libunwind", "miniz_oxide", "object", "optimize_for_size", "panic-unwind", "panic_immediate_abort", "std_detect_dlsym_getauxval", "std_detect_file_io", "system-llvm-libunwind", "windows_raw_dylib"))' -C metadata=f83f4be9b4957bc1 -C extra-filename=-5626981e099ee37b --out-dir /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps --target aarch64-tantraos -C linker=rust-lld -L dependency=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps -L dependency=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/debug/deps --extern 'priv:addr2line=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libaddr2line-bbf4fedd132a9d5e.rlib' --extern alloc=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/liballoc-8fb762d18e16146c.rlib --extern 'priv:cfg_if=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libcfg_if-784a8e5f691e46f6.rlib' --extern core=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libcore-c79bf7c8d33923f7.rlib --extern 'priv:hashbrown=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libhashbrown-5e9b3aafb8de9793.rlib' --extern libc=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/liblibc-1222b4726416f144.rlib --extern 'priv:miniz_oxide=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libminiz_oxide-cab8d4bb0752dd80.rlib' --extern 'priv:object=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libobject-0b3eeedbdfb703b2.rlib' --extern 'priv:panic_abort=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libpanic_abort-c072dd8ddcfb0bca.rlib' --extern 'priv:panic_unwind=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libpanic_unwind-5c09c4aaa7816b40.rlib' --extern 'priv:rustc_demangle=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/librustc_demangle-3a44432d4fbc1700.rlib' --extern std_detect=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libstd_detect-a89b208fc07751e7.rlib --extern 'priv:unwind=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libunwind-d7e29ab6eb738d82.rlib' -Z unstable-options -Csymbol-mangling-version=legacy '--check-cfg=cfg(feature,values(any()))' -Zunstable-options -Zmacro-backtrace -Csplit-debuginfo=off -Cprefer-dynamic -Zinline-mir -Zinline-mir-preserve-debug -Zmir_strip_debuginfo=locals-in-tiny-functions -Clink-args=-Wl,-z,origin '-Clink-args=-Wl,-rpath,$ORIGIN/../lib' -Alinker-messages -Cembed-bitcode=yes -Clto=off -Zunstable-options -Cforce-frame-pointers=non-leaf '-Zcrate-attr=doc(html_root_url="https://doc.rust-lang.org/nightly/")' -Z binary-dep-depinfo -L native=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/build/compiler_builtins-d931ed850ff3b322/out --cfg restricted_std --cfg backtrace_in_libstd --check-cfg 'cfg(netbsd10)' --check-cfg 'cfg(restricted_std)' --check-cfg 'cfg(backtrace_in_libstd)'`
+warning: dropping unsupported crate type `dylib` for target `aarch64-tantraos`
+
+error: none of the predicates in this `cfg_select` evaluated to true
+   --> library/std/src/sys/alloc/mod.rs:71:1
+    |
+ 71 | / cfg_select! {
+ 72 | |     any(
+ 73 | |         target_family = "unix",
+ 74 | |         target_os = "wasi",
+...   |
+104 | | }
+    | |_^
+
+error: unused import: `self`
+ --> library/std/src/sys/pal/tantraos/os.rs:5:19
+  |
+5 | use crate::path::{self, Path, PathBuf};
+  |                   ^^^^
+  |
+  = note: `-D unused-imports` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: hidden lifetime parameters in types are deprecated
+   --> library/std/src/sys/pal/tantraos/os.rs:107:41
+    |
+107 | pub fn split_paths(unparsed: &OsStr) -> SplitPaths {
+    |                                         ^^^^^^^^^^ expected lifetime parameter
+    |
+    = note: `-D elided-lifetimes-in-paths` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(elided_lifetimes_in_paths)]`
+help: indicate the anonymous lifetime
+    |
+107 | pub fn split_paths(unparsed: &OsStr) -> SplitPaths<'_> {
+    |                                                   ++++
+
+error: unused imports: `GlobalAlloc` and `Layout`
+  --> library/std/src/sys/pal/tantraos/mod.rs:18:20
+   |
+18 | use crate::alloc::{GlobalAlloc, Layout};
+   |                    ^^^^^^^^^^^  ^^^^^^
+
+error: unused import: `super::super::thread::key::*`
+   --> library/std/src/sys/pal/tantraos/mod.rs:111:17
+    |
+111 |         pub use super::super::thread::key::*;
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Did not run successfully: exit status: 1
+DYLD_LIBRARY_PATH="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/lib" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/bin/rustc" "--crate-name" "std" "--edition=2024" "library/std/src/lib.rs" "--error-format=json" "--json=diagnostic-rendered-ansi,artifacts,future-incompat" "--crate-type" "dylib" "--crate-type" "rlib" "--emit=dep-info,link" "-C" "embed-bitcode=no" "-C" "codegen-units=16" "--warn=unexpected_cfgs" "--check-cfg" "cfg(feature, values(any()))" "--check-cfg" "cfg(target_has_reliable_f16)" "--check-cfg" "cfg(target_has_reliable_f16_math)" "--check-cfg" "cfg(target_has_reliable_f128)" "--check-cfg" "cfg(target_has_reliable_f128_math)" "-C" "debug-assertions=off" "--cfg" "feature=\"addr2line\"" "--cfg" "feature=\"backtrace\"" "--cfg" "feature=\"compiler-builtins-c\"" "--cfg" "feature=\"miniz_oxide\"" "--cfg" "feature=\"object\"" "--cfg" "feature=\"panic-unwind\"" "--cfg" "feature=\"std_detect_dlsym_getauxval\"" "--cfg" "feature=\"std_detect_file_io\"" "--check-cfg" "cfg(docsrs,test)" "--check-cfg" "cfg(feature, values(\"addr2line\", \"backtrace\", \"backtrace-trace-only\", \"compiler-builtins-c\", \"compiler-builtins-mem\", \"compiler-builtins-no-f16-f128\", \"debug_refcell\", \"llvm-libunwind\", \"miniz_oxide\", \"object\", \"optimize_for_size\", \"panic-unwind\", \"panic_immediate_abort\", \"std_detect_dlsym_getauxval\", \"std_detect_file_io\", \"system-llvm-libunwind\", \"windows_raw_dylib\"))" "-C" "metadata=f83f4be9b4957bc1" "-C" "extra-filename=-5626981e099ee37b" "--out-dir" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps" "--target" "aarch64-tantraos" "-C" "linker=rust-lld" "-L" "dependency=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps" "-L" "dependency=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/debug/deps" "--extern" "priv:addr2line=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libaddr2line-bbf4fedd132a9d5e.rlib" "--extern" "alloc=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/liballoc-8fb762d18e16146c.rlib" "--extern" "priv:cfg_if=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libcfg_if-784a8e5f691e46f6.rlib" "--extern" "core=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libcore-c79bf7c8d33923f7.rlib" "--extern" "priv:hashbrown=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libhashbrown-5e9b3aafb8de9793.rlib" "--extern" "libc=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/liblibc-1222b4726416f144.rlib" "--extern" "priv:miniz_oxide=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libminiz_oxide-cab8d4bb0752dd80.rlib" "--extern" "priv:object=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libobject-0b3eeedbdfb703b2.rlib" "--extern" "priv:panic_abort=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libpanic_abort-c072dd8ddcfb0bca.rlib" "--extern" "priv:panic_unwind=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libpanic_unwind-5c09c4aaa7816b40.rlib" "--extern" "priv:rustc_demangle=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/librustc_demangle-3a44432d4fbc1700.rlib" "--extern" "std_detect=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libstd_detect-a89b208fc07751e7.rlib" "--extern" "priv:unwind=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libunwind-d7e29ab6eb738d82.rlib" "-Z" "unstable-options" "-Csymbol-mangling-version=legacy" "--check-cfg=cfg(feature,values(any()))" "-Zunstable-options" "-Zmacro-backtrace" "-Csplit-debuginfo=off" "-Cprefer-dynamic" "-Zinline-mir" "-Zinline-mir-preserve-debug" "-Zmir_strip_debuginfo=locals-in-tiny-functions" "-Clink-args=-Wl,-z,origin" "-Clink-args=-Wl,-rpath,$ORIGIN/../lib" "-Alinker-messages" "-Cembed-bitcode=yes" "-Clto=off" "-Zunstable-options" "-Cforce-frame-pointers=non-leaf" "-Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\")" "-Z" "binary-dep-depinfo" "-L" "native=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/build/compiler_builtins-d931ed850ff3b322/out" "--cfg" "restricted_std" "--cfg" "backtrace_in_libstd" "--check-cfg" "cfg(netbsd10)" "--check-cfg" "cfg(restricted_std)" "--check-cfg" "cfg(backtrace_in_libstd)" "-Wrust_2018_idioms" "-Wunused_lifetimes" "-Dwarnings" "--sysroot" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1" "-Z" "force-unstable-if-unmarked"
+-------------
+warning: `std` (lib) generated 1 warning
+error: could not compile `std` (lib) due to 5 previous errors; 1 warning emitted
+
+Caused by:
+  process didn't exit successfully: `/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc /Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc --crate-name std --edition=2024 library/std/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type dylib --crate-type rlib --emit=dep-info,link -C embed-bitcode=no -C codegen-units=16 --warn=unexpected_cfgs --check-cfg 'cfg(feature, values(any()))' --check-cfg 'cfg(target_has_reliable_f16)' --check-cfg 'cfg(target_has_reliable_f16_math)' --check-cfg 'cfg(target_has_reliable_f128)' --check-cfg 'cfg(target_has_reliable_f128_math)' -C debug-assertions=off --cfg 'feature="addr2line"' --cfg 'feature="backtrace"' --cfg 'feature="compiler-builtins-c"' --cfg 'feature="miniz_oxide"' --cfg 'feature="object"' --cfg 'feature="panic-unwind"' --cfg 'feature="std_detect_dlsym_getauxval"' --cfg 'feature="std_detect_file_io"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("addr2line", "backtrace", "backtrace-trace-only", "compiler-builtins-c", "compiler-builtins-mem", "compiler-builtins-no-f16-f128", "debug_refcell", "llvm-libunwind", "miniz_oxide", "object", "optimize_for_size", "panic-unwind", "panic_immediate_abort", "std_detect_dlsym_getauxval", "std_detect_file_io", "system-llvm-libunwind", "windows_raw_dylib"))' -C metadata=f83f4be9b4957bc1 -C extra-filename=-5626981e099ee37b --out-dir /Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps --target aarch64-tantraos -C linker=rust-lld -L dependency=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps -L dependency=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/debug/deps --extern 'priv:addr2line=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libaddr2line-bbf4fedd132a9d5e.rlib' --extern alloc=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/liballoc-8fb762d18e16146c.rlib --extern 'priv:cfg_if=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libcfg_if-784a8e5f691e46f6.rlib' --extern core=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libcore-c79bf7c8d33923f7.rlib --extern 'priv:hashbrown=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libhashbrown-5e9b3aafb8de9793.rlib' --extern libc=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/liblibc-1222b4726416f144.rlib --extern 'priv:miniz_oxide=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libminiz_oxide-cab8d4bb0752dd80.rlib' --extern 'priv:object=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libobject-0b3eeedbdfb703b2.rlib' --extern 'priv:panic_abort=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libpanic_abort-c072dd8ddcfb0bca.rlib' --extern 'priv:panic_unwind=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libpanic_unwind-5c09c4aaa7816b40.rlib' --extern 'priv:rustc_demangle=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/librustc_demangle-3a44432d4fbc1700.rlib' --extern std_detect=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libstd_detect-a89b208fc07751e7.rlib --extern 'priv:unwind=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/deps/libunwind-d7e29ab6eb738d82.rlib' -Z unstable-options -Csymbol-mangling-version=legacy '--check-cfg=cfg(feature,values(any()))' -Zunstable-options -Zmacro-backtrace -Csplit-debuginfo=off -Cprefer-dynamic -Zinline-mir -Zinline-mir-preserve-debug -Zmir_strip_debuginfo=locals-in-tiny-functions -Clink-args=-Wl,-z,origin '-Clink-args=-Wl,-rpath,$ORIGIN/../lib' -Alinker-messages -Cembed-bitcode=yes -Clto=off -Zunstable-options -Cforce-frame-pointers=non-leaf '-Zcrate-attr=doc(html_root_url="https://doc.rust-lang.org/nightly/")' -Z binary-dep-depinfo -L native=/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std/aarch64-tantraos/debug/build/compiler_builtins-d931ed850ff3b322/out --cfg restricted_std --cfg backtrace_in_libstd --check-cfg 'cfg(netbsd10)' --check-cfg 'cfg(restricted_std)' --check-cfg 'cfg(backtrace_in_libstd)'` (exit status: 1)
+command did not execute successfully: cd "/Users/girivs/src/rust-tantraos" && env -u MAKEFLAGS -u MFLAGS AR_aarch64_tantraos="ar" CARGO_BUILD_BUILD_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std" CARGO_INCREMENTAL="0" CARGO_LOG="cargo::core::compiler::fingerprint=info" CARGO_PROFILE_DEV_CODEGEN_UNITS="16" CARGO_PROFILE_DEV_DEBUG="0" CARGO_PROFILE_DEV_DEBUG_ASSERTIONS="false" CARGO_PROFILE_DEV_OVERFLOW_CHECKS="false" CARGO_PROFILE_DEV_STRIP="false" CARGO_TARGET_AARCH64_TANTRAOS_LINKER="rust-lld" CARGO_TARGET_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1-std" CC_aarch64_tantraos="clang" CFG_COMPILER_BUILD_TRIPLE="aarch64-apple-darwin" CFG_COMPILER_HOST_TRIPLE="aarch64-tantraos" CFG_RELEASE_CHANNEL="nightly" CFLAGS_aarch64_tantraos="" CXXFLAGS_aarch64_tantraos="" CXX_aarch64_tantraos="clang++" LIBC_CHECK_CFG="1" RANLIB_aarch64_tantraos="ar s" REAL_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH" RUSTBUILD_NATIVE_DIR="/Users/girivs/src/rust-tantraos/build/aarch64-tantraos/native" RUSTC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTC_BOOTSTRAP="1" RUSTC_BREAK_ON_ICE="1" RUSTC_ERROR_METADATA_DST="/Users/girivs/src/rust-tantraos/build/tmp/extended-error-metadata" RUSTC_FORCE_UNSTABLE="1" RUSTC_INSTALL_BINDIR="bin" RUSTC_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/lib" RUSTC_LINK_STD_INTO_RUSTC_DRIVER="1" RUSTC_LINT_FLAGS="-Wrust_2018_idioms -Wunused_lifetimes -Dwarnings" RUSTC_REAL="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1/bin/rustc" RUSTC_SNAPSHOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/rustc" RUSTC_SNAPSHOT_LIBDIR="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/lib" RUSTC_STAGE="1" RUSTC_SYSROOT="/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage1" RUSTC_VERBOSE="1" RUSTC_WRAPPER="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustc" RUSTDOC="/Users/girivs/src/rust-tantraos/build/bootstrap/debug/rustdoc" RUSTDOCFLAGS="-Csymbol-mangling-version=legacy --check-cfg=cfg(feature,values(any())) -Zunstable-options -Dwarnings -Wrustdoc::invalid_codeblock_attributes --crate-version 1.92.0-nightly\t(5b63cd28a\t2025-09-16) -Clinker=rust-lld -Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\") -Zcrate-attr=warn(rust_2018_idioms)" RUSTDOC_REAL="/path/to/nowhere/rustdoc/not/required" RUSTFLAGS="-Csymbol-mangling-version=legacy --check-cfg=cfg(feature,values(any())) -Zunstable-options -Zmacro-backtrace -Csplit-debuginfo=off -Cprefer-dynamic -Zinline-mir -Zinline-mir-preserve-debug -Zmir_strip_debuginfo=locals-in-tiny-functions -Clink-args=-Wl,-z,origin -Clink-args=-Wl,-rpath,$ORIGIN/../lib -Alinker-messages -Cembed-bitcode=yes -Clto=off -Zunstable-options -Cforce-frame-pointers=non-leaf -Zcrate-attr=doc(html_root_url=\"https://doc.rust-lang.org/nightly/\")" RUST_COMPILER_RT_ROOT="/Users/girivs/src/rust-tantraos/src/llvm-project/compiler-rt" RUST_TEST_THREADS="10" WINAPI_NO_BUNDLED_LIBRARIES="1" __CARGO_DEFAULT_LIB_METADATA="nightlystd1.92.0" "/Users/girivs/src/rust-tantraos/build/aarch64-apple-darwin/stage0/bin/cargo" "build" "--target" "aarch64-tantraos" "-Zbinary-dep-depinfo" "-j" "10" "-Zroot-dir=/Users/girivs/src/rust-tantraos" "-v" "--features" "backtrace panic-unwind compiler-builtins-c" "--manifest-path" "/Users/girivs/src/rust-tantraos/library/sysroot/Cargo.toml" "-p" "alloc" "-p" "compiler_builtins" "-p" "core" "-p" "panic_abort" "-p" "panic_unwind" "-p" "proc_macro" "-p" "rustc-std-workspace-core" "-p" "std" "-p" "std_detect" "-p" "sysroot" "-p" "test" "-p" "unwind" "--message-format" "json-render-diagnostics" (failure_mode=Exit)
+expected success, got: exit status: 101
+Traceback (most recent call last):
+  File "/Users/girivs/src/rust-tantraos/./x.py", line 53, in <module>
+    bootstrap.main()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/girivs/src/rust-tantraos/src/bootstrap/bootstrap.py", line 1392, in main
+    bootstrap(args)
+    ~~~~~~~~~^^^^^^
+  File "/Users/girivs/src/rust-tantraos/src/bootstrap/bootstrap.py", line 1367, in bootstrap
+    run(args, env=env, verbose=build.verbose, is_bootstrap=True)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/girivs/src/rust-tantraos/src/bootstrap/bootstrap.py", line 237, in run
+    raise RuntimeError(err)
+RuntimeError: failed to run: /Users/girivs/src/rust-tantraos/build/bootstrap/debug/bootstrap build --stage 1 --target aarch64-tantraos -j 10

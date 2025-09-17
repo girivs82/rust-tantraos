@@ -74,6 +74,12 @@ unsafe impl GlobalAlloc for TantraOSAllocator {
 unsafe impl GlobalAlloc for System {
     #[inline]
     unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
+        // Special case for zero-sized allocations
+        if layout.size() == 0 {
+            // Use proper pointer creation for zero-sized allocations
+            // This satisfies the alignment requirement without actually allocating
+            return core::ptr::NonNull::<u8>::dangling().as_ptr();
+        }
         unsafe { TantraOSAllocator.alloc(layout) }
     }
 

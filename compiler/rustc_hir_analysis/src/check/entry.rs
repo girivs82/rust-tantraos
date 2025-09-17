@@ -93,10 +93,14 @@ fn check_main_fn_ty(tcx: TyCtxt<'_>, main_def_id: DefId) {
 
     let main_asyncness = tcx.asyncness(main_def_id);
     if main_asyncness.is_async() {
-        let asyncness_span = main_fn_asyncness_span(tcx, main_def_id);
-        tcx.dcx()
-            .emit_err(errors::MainFunctionAsync { span: main_span, asyncness: asyncness_span });
-        error = true;
+        // TantraOS supports async main as everything is an async tasklet
+        let target_os = tcx.sess.target.os.as_ref();
+        if target_os != "tantraos" {
+            let asyncness_span = main_fn_asyncness_span(tcx, main_def_id);
+            tcx.dcx()
+                .emit_err(errors::MainFunctionAsync { span: main_span, asyncness: asyncness_span });
+            error = true;
+        }
     }
 
     if let Some(attr_span) =
@@ -122,7 +126,14 @@ fn check_main_fn_ty(tcx: TyCtxt<'_>, main_def_id: DefId) {
     // Main should have no WC, so empty param env is OK here.
     let param_env = ty::ParamEnv::empty();
     let expected_return_type;
-    if let Some(term_did) = tcx.lang_items().termination() {
+    let target_os = tcx.sess.target.os.as_ref();
+
+    // TantraOS supports async main, so handle Future return types specially
+    if target_os == "tantraos" && main_asyncness.is_async() {
+        // For async main on TantraOS, we expect the function to return a Future<Output = ()>
+        // The actual return type checking is bypassed as the runtime handles it
+        expected_return_type = tcx.types.unit;
+    } else if let Some(term_did) = tcx.lang_items().termination() {
         let return_ty = main_fnsig.output();
         let return_ty_span = main_fn_return_type_span(tcx, main_def_id).unwrap_or(main_span);
         let Some(return_ty) = return_ty.no_bound_vars() else {
@@ -154,27 +165,30 @@ fn check_main_fn_ty(tcx: TyCtxt<'_>, main_def_id: DefId) {
         return;
     }
 
-    let expected_sig = ty::Binder::dummy(tcx.mk_fn_sig(
-        [],
-        expected_return_type,
-        false,
-        hir::Safety::Safe,
-        ExternAbi::Rust,
-    ));
+    // Skip signature check for async main on TantraOS
+    if !(target_os == "tantraos" && main_asyncness.is_async()) {
+        let expected_sig = ty::Binder::dummy(tcx.mk_fn_sig(
+            [],
+            expected_return_type,
+            false,
+            hir::Safety::Safe,
+            ExternAbi::Rust,
+        ));
 
-    if check_function_signature(
-        tcx,
-        ObligationCause::new(
-            main_span,
-            main_diagnostics_def_id,
-            ObligationCauseCode::MainFunctionType,
-        ),
-        main_def_id,
-        expected_sig,
-    )
-    .is_err()
-    {
-        return;
+        if check_function_signature(
+            tcx,
+            ObligationCause::new(
+                main_span,
+                main_diagnostics_def_id,
+                ObligationCauseCode::MainFunctionType,
+            ),
+            main_def_id,
+            expected_sig,
+        )
+        .is_err()
+        {
+            return;
+        }
     }
 
     let main_fn_generics = tcx.generics_of(main_def_id);

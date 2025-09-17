@@ -1357,6 +1357,7 @@ pub(crate) mod main_thread {
 
             /// # Safety
             /// May only be called once.
+            #[cfg_attr(target_os = "tantraos", allow(dead_code))]
             pub(crate) unsafe fn set(id: ThreadId) {
                 MAIN.store(id.as_u64().get(), Relaxed)
             }
@@ -1380,6 +1381,7 @@ pub(crate) mod main_thread {
 
             /// # Safety
             /// May only be called once.
+            #[cfg_attr(target_os = "tantraos", allow(dead_code))]
             pub(crate) unsafe fn set(id: ThreadId) {
                 unsafe { MAIN = MaybeUninit::new(id) };
                 INIT.store(true, Release);

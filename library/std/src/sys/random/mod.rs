@@ -98,6 +98,10 @@ cfg_select! {
         mod zkvm;
         pub use zkvm::fill_bytes;
     }
+    target_os = "tantraos" => {
+        mod tantraos;
+        pub use tantraos::{fill_bytes, hashmap_random_keys};
+    }
     any(
         all(target_family = "wasm", target_os = "unknown"),
         target_os = "xous",
@@ -116,6 +120,7 @@ cfg_select! {
     all(target_family = "wasm", target_os = "unknown"),
     all(target_os = "wasi", target_env = "p2"),
     target_os = "xous",
+    target_os = "tantraos",
 )))]
 pub fn hashmap_random_keys() -> (u64, u64) {
     let mut buf = [0; 16];
