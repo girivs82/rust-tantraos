@@ -153,15 +153,7 @@ pub(super) struct DestinationPropagation;
 
 impl<'tcx> crate::MirPass<'tcx> for DestinationPropagation {
     fn is_enabled(&self, sess: &rustc_session::Session) -> bool {
-        // For now, only run at MIR opt level 3. Two things need to be changed before this can be
-        // turned on by default:
-        //  1. Because of the overeager removal of storage statements, this can cause stack space
-        //     regressions. This opt is not the place to fix this though, it's a more general
-        //     problem in MIR.
-        //  2. Despite being an overall perf improvement, this still causes a 30% regression in
-        //     keccak. We can temporarily fix this by bounding function size, but in the long term
-        //     we should fix this by being smarter about invalidating analysis results.
-        sess.mir_opt_level() >= 3
+        sess.mir_opt_level() >= 2
     }
 
     #[tracing::instrument(level = "trace", skip(self, tcx, body))]
@@ -567,13 +559,15 @@ fn save_as_intervals<'tcx>(
         // the written-to locals as live in the second half of the statement.
         // We also ensure that operands read by terminators conflict with writes by that terminator.
         // For instance a function call may read args after having written to the destination.
-        VisitPlacesWith(|place, ctxt| match DefUse::for_place(place, ctxt) {
-            DefUse::Def | DefUse::Use | DefUse::PartialWrite => {
-                if let Some(relevant) = relevant.shrink[place.local] {
-                    values.insert(relevant, twostep);
+        VisitPlacesWith(|place: Place<'tcx>, ctxt| {
+            if let Some(relevant) = relevant.shrink[place.local] {
+                match DefUse::for_place(place, ctxt) {
+                    DefUse::Def | DefUse::Use | DefUse::PartialWrite => {
+                        values.insert(relevant, twostep);
+                    }
+                    DefUse::NonUse => {}
                 }
             }
-            DefUse::NonUse => {}
         })
         .visit_terminator(term, loc);
 
@@ -588,15 +582,32 @@ fn save_as_intervals<'tcx>(
             twostep = TwoStepIndex::from_u32(twostep.as_u32() + 1);
             debug_assert_eq!(twostep, two_step_loc(loc, Effect::After));
             append_at(&mut values, &state, twostep);
-            // Ensure we have a non-zero live range even for dead stores. This is done by marking
-            // all the written-to locals as live in the second half of the statement.
-            VisitPlacesWith(|place, ctxt| match DefUse::for_place(place, ctxt) {
-                DefUse::Def | DefUse::PartialWrite => {
-                    if let Some(relevant) = relevant.shrink[place.local] {
-                        values.insert(relevant, twostep);
+            // Like terminators, ensure we have a non-zero live range even for dead stores.
+            // Some rvalues interleave reads and writes, for instance `Rvalue::Aggregate`, see
+            // https://github.com/rust-lang/rust/issues/146383. By precaution, treat statements
+            // as behaving so by default.
+            // We make an exception for simple assignments `_a.stuff = {copy|move} _b.stuff`,
+            // as marking `_b` live here would prevent unification.
+            let is_simple_assignment = match stmt.kind {
+                StatementKind::Assign(box (
+                    lhs,
+                    Rvalue::CopyForDeref(rhs)
+                    | Rvalue::Use(Operand::Copy(rhs) | Operand::Move(rhs)),
+                )) => lhs.projection == rhs.projection,
+                _ => false,
+            };
+            VisitPlacesWith(|place: Place<'tcx>, ctxt| {
+                if let Some(relevant) = relevant.shrink[place.local] {
+                    match DefUse::for_place(place, ctxt) {
+                        DefUse::Def | DefUse::PartialWrite => {
+                            values.insert(relevant, twostep);
+                        }
+                        DefUse::Use if !is_simple_assignment => {
+                            values.insert(relevant, twostep);
+                        }
+                        DefUse::Use | DefUse::NonUse => {}
                     }
                 }
-                DefUse::Use | DefUse::NonUse => {}
             })
             .visit_statement(stmt, loc);
 

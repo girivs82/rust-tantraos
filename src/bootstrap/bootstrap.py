@@ -1148,7 +1148,8 @@ class RustBuild(object):
             os.path.join(self.rust_root, "src/bootstrap/Cargo.toml"),
             "-Zroot-dir=" + self.rust_root,
         ]
-        args.extend("--verbose" for _ in range(self.verbose))
+        # verbose cargo output is very noisy, so only enable it with -vv
+        args.extend("--verbose" for _ in range(self.verbose - 1))
 
         if "BOOTSTRAP_TRACING" in env:
             args.append("--features=tracing")
@@ -1192,8 +1193,6 @@ class RustBuild(object):
             return "<commit>"
         cmd = [
             "git",
-            "-C",
-            repo_path,
             "rev-list",
             "--author",
             author_email,
@@ -1201,7 +1200,9 @@ class RustBuild(object):
             "HEAD",
         ]
         try:
-            commit = subprocess.check_output(cmd, universal_newlines=True).strip()
+            commit = subprocess.check_output(
+                cmd, universal_newlines=True, cwd=repo_path
+            ).strip()
             return commit or "<commit>"
         except subprocess.CalledProcessError:
             return "<commit>"
