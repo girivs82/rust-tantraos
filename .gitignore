@@ -66,6 +66,9 @@ src/tools/nix-dev-shell/flake.lock
 ## ICE reports
 rustc-ice-*.txt
 
+## Build logs
+*.log
+
 ## Temporary files
 *~
 \#*
