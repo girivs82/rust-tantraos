@@ -251,3 +251,14 @@ impl MailboxWaker {
         });
     }
 }
+
+// Force instantiation of Termination trait for unit type
+// This ensures MIR is generated for cross-compilation
+#[doc(hidden)]
+pub fn __force_termination_instantiation() {
+    use crate::process::Termination;
+
+    // This function forces the compiler to generate MIR for the Termination trait
+    // implementation for the unit type (), which is required for main() functions
+    let _exit_code = ().report();
+}

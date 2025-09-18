@@ -2544,7 +2544,7 @@ pub trait Termination {
 
 #[stable(feature = "termination_trait_lib", since = "1.61.0")]
 impl Termination for () {
-    #[inline]
+    // Removed #[inline] to ensure MIR is generated for cross-compilation
     fn report(self) -> ExitCode {
         ExitCode::SUCCESS
     }
