@@ -206,8 +206,8 @@ pub fn run_async_main<F: Future>(future: F) -> F::Output {
 /// This is called directly by the compiler for async main functions
 #[unsafe(no_mangle)]
 #[allow(improper_ctypes_definitions)]
-pub extern "C" fn __tantraos_async_main_wrapper(
-    future_ptr: *mut u8,  // Pointer to the Future returned by main
+pub unsafe extern "C" fn __tantraos_async_main_wrapper(
+    _future_ptr: *mut u8,  // Pointer to the Future returned by main
 ) -> i32 {
     // Safety: This function is only called by compiler-generated code
     // with a valid Future pointer

@@ -11,6 +11,7 @@ pub mod thread;
 pub mod runtime;
 pub mod panic;
 pub mod rt;
+pub mod process;
 
 // Global allocator for TantraOS is implemented in sys/alloc/tantraos.rs
 

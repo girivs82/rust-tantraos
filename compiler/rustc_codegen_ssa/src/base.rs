@@ -548,11 +548,11 @@ pub fn maybe_create_entry_wrapper<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>>(
             if is_async {
                 // For async main on TantraOS:
                 // 1. Call main() to get the Future
-                // 2. Pass it to a wrapper that will handle the async execution
+                // 2. Pass it to block_on to execute it
                 // 3. Return the result
 
                 // Call main to get the Future
-                let _future_result = bx.call(
+                let future_result = bx.call(
                     cx.type_func(&[], cx.val_ty(rust_main)),
                     None,
                     None,
@@ -562,18 +562,66 @@ pub fn maybe_create_entry_wrapper<'a, 'tcx, Bx: BuilderMethods<'a, 'tcx>>(
                     None,
                 );
 
-                // For async main on TantraOS:
-                // We call main() to get the Future, but for now we just return 0
-                // A complete implementation requires:
-                // 1. Properly instantiating the generic block_on function
-                // 2. Type-erasing the future into dyn Future
-                // 3. Passing it to the runtime executor
+                // Try to get the block_on lang item and instantiate it
+                if let Some(block_on_def_id) = cx.tcx().lang_items().tantraos_block_on_fn() {
+                    // Get the actual Future type returned by main
+                    // For async functions, the return type is an opaque impl Future<Output = T>
 
-                // For now, this allows async main to compile and link successfully
-                // The future is created but not executed yet
+                    // Create the generic args for block_on<F>
+                    // block_on has signature: pub fn block_on<F: Future>(future: F) -> F::Output
+                    let generic_args = cx.tcx().mk_args(&[main_ret_ty.into()]);
 
-                let zero = bx.const_int(cx.type_int(), 0);
-                bx.ret(zero);
+                    // Create an instance with the concrete Future type
+                    let block_on_instance = ty::Instance::expect_resolve(
+                        cx.tcx(),
+                        cx.typing_env(),
+                        block_on_def_id,
+                        generic_args,
+                        DUMMY_SP,
+                    );
+
+                    // Get the monomorphized function
+                    let block_on_fn = cx.get_fn_addr(block_on_instance);
+
+                    // Call block_on with the future
+                    let block_on_ret_ty = cx.tcx().fn_sig(block_on_def_id)
+                        .instantiate(cx.tcx(), generic_args)
+                        .output()
+                        .no_bound_vars()
+                        .unwrap();
+
+                    // Normalize the return type to get the actual type
+                    let block_on_ret_ty = cx.tcx().normalize_erasing_regions(
+                        cx.typing_env(),
+                        block_on_ret_ty
+                    );
+
+                    // Create the function type for block_on
+                    let block_on_fn_ty = cx.type_func(
+                        &[cx.val_ty(future_result)],
+                        cx.backend_type(cx.layout_of(block_on_ret_ty))
+                    );
+
+                    // Call block_on with the future
+                    let result = bx.call(
+                        block_on_fn_ty,
+                        None,
+                        None,
+                        block_on_fn,
+                        &[future_result],
+                        None,
+                        Some(block_on_instance),
+                    );
+
+                    // Cast result to int and return
+                    let cast = bx.intcast(result, cx.type_int(), true);
+                    bx.ret(cast);
+                } else {
+                    // Fallback: if block_on lang item not found, just return 0
+                    // This should not happen in practice for TantraOS
+                    let zero = bx.const_int(cx.type_int(), 0);
+                    bx.ret(zero);
+                }
             } else {
                 // For non-async main, handle normally with Termination trait
                 let call_result = bx.call(
