@@ -342,6 +342,10 @@ pub mod unicode;
 pub mod future;
 pub mod task;
 
+// TantraOS-specific async runtime support
+#[cfg(target_os = "tantraos")]
+pub mod tantraos;
+
 /* Heap memory allocator trait */
 #[allow(missing_docs)]
 pub mod alloc;

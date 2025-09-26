@@ -194,6 +194,7 @@ declare_passes! {
     mod single_use_consts : SingleUseConsts;
     mod sroa : ScalarReplacementOfAggregates;
     mod strip_debuginfo : StripDebugInfo;
+    mod tantraos_el0 : TantraosEl0Transform;
     mod unreachable_enum_branching : UnreachableEnumBranching;
     mod unreachable_prop : UnreachablePropagation;
     mod validate : Validator;
