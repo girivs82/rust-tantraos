@@ -344,6 +344,7 @@ pub mod task;
 
 // TantraOS-specific async runtime support
 #[cfg(target_os = "tantraos")]
+#[stable(feature = "tantraos_runtime", since = "1.0.0")]
 pub mod tantraos;
 
 /* Heap memory allocator trait */

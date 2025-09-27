@@ -21,7 +21,7 @@
 /// }
 /// ```
 #[cfg(target_os = "tantraos")]
-pub use tantraos_macros::el0_tasklet;
+// pub use tantraos_macros::el0_tasklet; // TODO: Add tantraos_macros crate
 
 /// Block on a future (TantraOS runtime)
 ///
@@ -29,7 +29,8 @@ pub use tantraos_macros::el0_tasklet;
 /// integrates with the kernel's async runtime.
 #[cfg(target_os = "tantraos")]
 #[lang = "tantraos_block_on"]
-pub fn block_on<F: Future>(future: F) -> F::Output {
+#[stable(feature = "tantraos_runtime", since = "1.0.0")]
+pub fn block_on<F: Future>(_future: F) -> F::Output {
     // This is a stub - the actual implementation is in the kernel
     // The compiler will replace calls to this with the actual runtime
     unsafe { core::hint::unreachable_unchecked() }
@@ -40,6 +41,7 @@ pub fn block_on<F: Future>(future: F) -> F::Output {
 /// This allows cooperative multitasking by voluntarily yielding
 /// the CPU to other tasklets.
 #[cfg(target_os = "tantraos")]
+#[stable(feature = "tantraos_runtime", since = "1.0.0")]
 pub async fn yield_now() {
     struct YieldFuture {
         yielded: bool,
@@ -64,15 +66,16 @@ pub async fn yield_now() {
 
 /// EL0 runtime support
 #[cfg(all(target_os = "tantraos", target_arch = "aarch64"))]
+#[stable(feature = "tantraos_runtime", since = "1.0.0")]
 pub mod el0_runtime {
     use core::arch::asm;
     use core::task::{Context, Poll, Waker, RawWaker, RawWakerVTable};
     use core::future::Future;
     use core::pin::Pin;
-    use core::ptr;
 
     /// Yield to EL1 via SVC
     #[inline(always)]
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub fn svc_yield() {
         unsafe {
             asm!(
@@ -84,6 +87,7 @@ pub mod el0_runtime {
 
     /// Return to EL1 with a value
     #[inline(always)]
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub fn svc_return(value: u64) -> ! {
         unsafe {
             asm!(
@@ -96,6 +100,7 @@ pub mod el0_runtime {
 
     /// Wake a tasklet via SVC
     #[inline(always)]
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub fn svc_wake(tasklet_id: u64) {
         unsafe {
             asm!(
@@ -124,7 +129,7 @@ pub mod el0_runtime {
     }
 
     unsafe fn el0_wake_by_ref(data: *const ()) {
-        el0_wake(data);
+        unsafe { el0_wake(data); }
     }
 
     unsafe fn el0_drop(_: *const ()) {
@@ -132,8 +137,10 @@ pub mod el0_runtime {
     }
 
     /// Create an EL0 waker
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub fn create_el0_waker(tasklet_id: u64) -> Waker {
         unsafe {
+            #[allow(fuzzy_provenance_casts)]
             Waker::from_raw(RawWaker::new(
                 tasklet_id as *const (),
                 &EL0_WAKER_VTABLE,
@@ -145,6 +152,7 @@ pub mod el0_runtime {
     ///
     /// This function polls a future at EL0, handling the cross-privilege
     /// communication via SVC instructions.
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub unsafe fn poll_el0_future<F: Future>(
         future: *mut F,
         tasklet_id: u64,
@@ -154,8 +162,8 @@ pub mod el0_runtime {
         let mut context = Context::from_waker(&waker);
 
         // Pin the future
-        let future_ref = &mut *future;
-        let pinned = Pin::new_unchecked(future_ref);
+        let future_ref = unsafe { &mut *future };
+        let pinned = unsafe { Pin::new_unchecked(future_ref) };
 
         // Poll the future
         pinned.poll(&mut context)
@@ -165,7 +173,8 @@ pub mod el0_runtime {
     ///
     /// This is called by the kernel when starting an EL0 tasklet.
     /// It sets up the async runtime and begins polling the future.
-    #[no_mangle]
+    #[unsafe(no_mangle)]
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub unsafe extern "C" fn __tantraos_el0_entry(
         future_ptr: *mut u8,
         poll_fn: unsafe extern "C" fn(*mut u8, u64) -> u8,
@@ -174,7 +183,7 @@ pub mod el0_runtime {
         // Simple polling loop
         loop {
             // Poll the future using the provided function pointer
-            let result = poll_fn(future_ptr, tasklet_id);
+            let result = unsafe { poll_fn(future_ptr, tasklet_id) };
 
             if result == 0 {
                 // Pending - yield to scheduler
@@ -187,14 +196,14 @@ pub mod el0_runtime {
     }
 
     /// Generic poll wrapper for the compiler to use
-    #[no_mangle]
+    #[stable(feature = "tantraos_runtime", since = "1.0.0")]
     pub unsafe extern "C" fn __tantraos_poll_wrapper<F: Future>(
         future_ptr: *mut u8,
         tasklet_id: u64,
     ) -> u8 {
         let future = future_ptr as *mut F;
 
-        match poll_el0_future(future, tasklet_id) {
+        match unsafe { poll_el0_future(future, tasklet_id) } {
             Poll::Ready(_) => 1,
             Poll::Pending => 0,
         }

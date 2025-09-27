@@ -64,6 +64,8 @@ git merge upstream/master
 # - library/std/src/os/tantraos/*
 ```
 
+**Last sync:** 2025-09-18 - Merged cleanly with no conflicts
+
 ## TantraOS-Specific Changes
 
 Key files modified/added for TantraOS support:

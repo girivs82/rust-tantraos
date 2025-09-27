@@ -10,8 +10,6 @@
 //! - SVC-based yield/return mechanism
 
 use rustc_middle::ty::{self, TyCtxt, Instance};
-use rustc_middle::mir::mono::MonoItem;
-use rustc_span::DUMMY_SP;
 use rustc_codegen_ssa::traits::*;
 
 /// Generate EL0-compatible async tasklet code

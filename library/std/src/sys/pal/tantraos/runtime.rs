@@ -126,7 +126,6 @@ fn init_runtime_mailbox() {
 }
 
 /// Submit an async task to the kernel runtime via TypedMailbox
-#[cfg_attr(target_os = "tantraos", lang = "tantraos_block_on")]
 pub fn block_on<F: Future>(future: F) -> F::Output {
     init_runtime_mailbox();
 
