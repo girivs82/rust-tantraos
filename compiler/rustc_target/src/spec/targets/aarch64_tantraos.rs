@@ -40,7 +40,7 @@ pub(crate) fn target() -> Target {
             families: cvs![],  // TantraOS is NOT Unix - it's its own OS family
 
             // Custom entry point for TNF tasklets
-            entry_name: "tasklet_main".into(),
+            entry_name: "_start".into(),
 
             // Async-first configuration
             panic_strategy: PanicStrategy::Abort,
@@ -65,7 +65,7 @@ pub(crate) fn target() -> Target {
             // Custom linking for TNF format - minimal bare metal linking
             pre_link_args: TargetOptions::link_args(
                 LinkerFlavor::Gnu(Cc::No, Lld::No),
-                &["--entry=tasklet_main"],
+                &["--entry=_start"],
             ),
 
             ..Default::default()
