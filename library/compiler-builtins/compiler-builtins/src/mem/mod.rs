@@ -51,3 +51,4 @@ intrinsics! {
         impls::c_string_length(s)
     }
 }
+

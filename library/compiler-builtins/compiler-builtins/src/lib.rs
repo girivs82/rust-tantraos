@@ -47,6 +47,10 @@ pub mod int;
 pub mod math;
 pub mod mem;
 
+// TantraOS-specific memory intrinsics using TypedMailbox IPC
+#[cfg(target_os = "tantraos")]
+pub mod tantraos_mem;
+
 // `libm` expects its `support` module to be available in the crate root.
 use math::libm_math::support;
 
